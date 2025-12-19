@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 const socialLinks = [
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/in/austinrose",
+    href: "https://linkedin.com/in/roseaustin",
     description: "Connect professionally",
   },
   {
     name: "GitHub",
-    href: "https://github.com/austinrose",
+    href: "https://github.com/austinjamesrose",
     description: "View my code",
   },
   {

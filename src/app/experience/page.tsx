@@ -9,48 +9,81 @@ export const metadata: Metadata = {
 
 const experiences = [
   {
-    period: "2023 - Present",
+    period: "Jan 2023 - Present",
     title: "Head of People Analytics",
     company: "The Aspen Group",
+    location: "Chicago, IL / Dallas, TX (Remote)",
+    highlights: [
+      "Partner with brand HR leaders and People CoE teams as a strategic advisor, translating workforce trends into talent investment recommendations",
+      "Built workforce forecasting models projecting headcount demand—identified surgery capacity shortfall that led to accelerated Oral Surgeon hiring protecting Q1 2026 revenue",
+      "Diagnosed pre-hire drop-off as key revenue risk; recommended dedicated Onboarding team resulting in 50 additional doctor starts YoY and $55M incremental revenue",
+      "Architected enterprise reporting ecosystem: 950+ custom Workday reports, 500+ calculated fields, and 20+ dashboards",
+      "Established Report Writing Committee to govern Workday conventions for 80+ analysts",
+    ],
+  },
+  {
+    period: "Feb 2021 - Jan 2023",
+    title: "Senior Recruiter, Data Analytics",
+    company: "Chime",
     location: "Chicago, IL",
     highlights: [
-      "Lead People Analytics function supporting 23,000+ employees across multiple brands",
-      "Built 950+ custom Workday reports and 20+ executive dashboards",
-      "Delivered $55M incremental revenue through data-driven onboarding initiative",
-      "Established Report Writing Committee to standardize practices for 80+ analysts",
+      "Scaled Data Analytics organization from 16 to 59 analysts across Marketing, Product, and Strategy—43 total hires",
+      "Analyzed funnel conversion data to identify process gaps; introduced presentation round that increased offer-to-hire by 8%",
+      "Developed SQL and Python technical assessments alongside hiring managers to evaluate candidate skills",
     ],
   },
   {
-    period: "2021 - 2023",
-    title: "Senior Recruiter",
-    company: "Chime",
+    period: "May 2020 - Feb 2021",
+    title: "Senior Recruiter, Software Engineering",
+    company: "Vineti",
     location: "San Francisco, CA",
     highlights: [
-      "Led full-cycle recruiting for engineering and product roles",
-      "Developed data-driven sourcing strategies improving pipeline quality",
-      "Created recruiting analytics dashboards for leadership visibility",
-      "Mentored junior recruiters on data analysis and reporting",
+      "Full lifecycle recruiter for Software Engineering, DevOps, and Business Development",
+      "Launched candidate experience survey—drove satisfaction from 71% to 86%",
+      "Project managed Greenhouse ATS implementation, defining workflows and recruiter experience",
     ],
   },
   {
-    period: "2019 - 2021",
-    title: "Technical Recruiter",
-    company: "Various Companies",
-    location: "San Francisco Bay Area",
+    period: "Sep 2019 - Apr 2020",
+    title: "Recruiter, Software Engineering",
+    company: "NextRoll",
+    location: "San Francisco, CA",
     highlights: [
-      "Specialized in engineering and data science recruiting",
-      "Built custom tracking systems for candidate pipeline management",
-      "Introduced analytics practices to recruiting operations",
+      "Full lifecycle recruiter for Engineering, Data Science, Analytics, and Business Intelligence",
+      "Optimized contractor interview process—reduced source-to-hire by 14 days",
+      "Built recruiting SLAs, headcount routing rules, and modeled projected headcount growth",
+    ],
+  },
+  {
+    period: "Sep 2018 - Sep 2019",
+    title: "Global Recruiter, Tech & Product",
+    company: "Delivery Hero SE",
+    location: "Berlin, Germany",
+    highlights: [
+      "High-volume recruiter for international Product organization: Product Design, Product Management, Agile Coaches",
+      "Partnered with IT on Workday Recruiting implementation, scoping business processes",
+      "Led quarterly retrospectives for 50+ person Talent Acquisition team",
+    ],
+  },
+  {
+    period: "2016 - 2018",
+    title: "Earlier Roles",
+    company: "Highsnobiety, Pindrop, Hortonworks",
+    location: "Berlin / Atlanta",
+    highlights: [
+      "Community Manager at Highsnobiety (Berlin)",
+      "Business Development Representative at Pindrop and Hortonworks (Atlanta)",
     ],
   },
 ];
 
 const education = [
   {
-    degree: "Bachelor of Science",
-    field: "Business Administration",
-    school: "University of Example",
-    year: "2018",
+    degree: "BBA",
+    field: "Sports Business Management",
+    school: "Mercer University",
+    location: "Macon, GA",
+    year: "2016",
   },
 ];
 
@@ -141,6 +174,9 @@ export default function ExperiencePage() {
               </h3>
               <p className="text-text-secondary text-base md:text-lg mt-1">
                 {education[0].school}
+              </p>
+              <p className="text-text-tertiary text-sm md:text-base mt-1">
+                {education[0].location}
               </p>
             </div>
           </div>

@@ -14,7 +14,7 @@ const projects = [
     category: "Process Optimization",
     title: "Onboarding Team Initiative",
     description:
-      "Data-driven recommendation for dedicated Onboarding team that addressed doctor pre-hire process causing attrition.",
+      "Diagnosed pre-hire drop-off as a key revenue risk by analyzing attrition data. Asked 'why are we losing doctors before they even start?' and traced the problem to a 6+ month credentialing process with no dedicated support.",
     impact: "$55M incremental revenue, 50+ doctors retained",
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     category: "Data Infrastructure",
     title: "Workday Reporting Ecosystem",
     description:
-      "Built comprehensive reporting infrastructure with 950+ custom reports, 500 calculated fields, and 20+ dashboards.",
+      "Built the data infrastructure foundation from scratch—creating standardized reporting conventions, calculated fields, and dashboards that give visibility across all business units.",
     impact: "Standardized reporting for 80+ analysts",
   },
   {
@@ -49,6 +49,22 @@ const projects = [
       "Established governance committee to standardize Workday report conventions and best practices.",
     impact: "Improved accuracy and findability for 80+ analysts",
   },
+  {
+    id: "workforce-forecasting",
+    category: "Predictive Analytics",
+    title: "Workforce Forecasting Model",
+    description:
+      "Built models projecting headcount demand, requisition volume, and specialist labor availability. Identified a projected surgery capacity shortfall that led leadership to accelerate Oral Surgeon hiring.",
+    impact: "Protected Q1 2026 revenue targets",
+  },
+  {
+    id: "recruiting-funnel",
+    category: "Process Optimization",
+    title: "Recruiting Funnel Optimization",
+    description:
+      "Analyzed funnel conversion data at each interview stage to identify process gaps. Introduced new presentation round based on data insights.",
+    impact: "8% improvement in offer-to-hire conversion",
+  },
 ];
 
 const categories = [
@@ -58,6 +74,7 @@ const categories = [
   "Process Optimization",
   "Tools & Automation",
   "Data Governance",
+  "Predictive Analytics",
 ];
 
 export default function WorkPage() {

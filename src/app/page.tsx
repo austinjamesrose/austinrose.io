@@ -23,8 +23,7 @@ export default function HomePage() {
 
             {/* Value prop */}
             <p className="text-text-secondary mb-10 max-w-xl mx-auto text-lg md:text-xl leading-relaxed">
-              I transform workforce data into strategic decisions that drive
-              business outcomes.
+              People Analytics leader who partners with HR and business leaders to turn workforce data into strategic action. Proven track record building analytics infrastructure, delivering executive-level insights, and driving measurable business outcomes.
             </p>
 
             {/* CTAs */}
@@ -139,10 +138,7 @@ export default function HomePage() {
               About Me
             </h2>
             <p className="text-text-secondary text-lg md:text-xl leading-relaxed mb-10">
-              I&apos;m a People Analytics leader who believes that data should tell a
-              story. With a background in recruiting and a passion for
-              visualization, I bridge the gap between HR operations and
-              strategic business decisions.
+              My career tells a story of analytical curiosity evolving into People Analytics leadership. Starting in recruiting, I was always the person asking &apos;what does the data say?&apos; That curiosity led me from scaling analytics teams at Chime to leading People Analytics for a 23,000+ employee organization.
             </p>
             <Link
               href="/about"
@@ -163,8 +159,7 @@ export default function HomePage() {
               Let&apos;s connect.
             </h2>
             <p className="text-text-secondary text-lg md:text-xl mb-10">
-              Open to opportunities in People Analytics leadership and
-              consulting.
+              Looking to deepen expertise in advanced analytics and predictive modeling while continuing to influence critical talent decisions.
             </p>
             <Link
               href="/contact"

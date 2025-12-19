@@ -19,22 +19,15 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
             <div className="space-y-6">
               <p className="text-text-secondary text-lg md:text-xl leading-relaxed">
-                I&apos;m Austin Rose, Head of People Analytics at The Aspen Group. My
-                journey into analytics started in an unexpected place: recruiting.
+                My career tells a story of natural analytical curiosity evolving into People Analytics leadership. Starting in recruiting and business development roles, I was always the person asking &apos;what does the data say?&apos;—tracking conversion rates, analyzing reply rates to outreach, and looking for ways to optimize processes.
               </p>
               <p className="text-text-secondary text-lg md:text-xl leading-relaxed">
-                Working as a recruiter, I became fascinated by the patterns in
-                hiring data. Why did some roles fill quickly while others
-                languished? What made candidates succeed? These questions led me
-                to dive deeper into data, eventually transitioning fully into
-                People Analytics.
+                That curiosity led to increasingly data-focused recruiting roles at companies like Chime, where I scaled a Data Analytics team from 16 to 59 analysts while using funnel data to improve hiring processes. The transition to a dedicated People Analytics role at The Aspen Group was a natural next step—finally getting to focus entirely on the analytical work I&apos;d been drawn to all along.
               </p>
             </div>
             <div>
               <p className="text-text-secondary text-lg md:text-xl leading-relaxed">
-                Today, I lead analytics initiatives that impact 23,000+ employees,
-                building the data infrastructure and visualizations that help
-                executives make better talent decisions.
+                Now, with three years leading People Analytics for a 23,000+ employee organization, I&apos;m ready to go deeper technically. I&apos;m not looking to abandon the strategic partnership and business impact—I want to pair it with more sophisticated analytical methods and stronger technical fundamentals.
               </p>
             </div>
           </div>
@@ -56,7 +49,15 @@ export default function AboutPage() {
               <ul className="space-y-3 text-text-secondary text-base md:text-lg">
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
-                  Workday Report Writer
+                  Workday (deep expertise)
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  SQL (CTEs, window functions, complex joins)
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Python (pandas, matplotlib)
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
@@ -64,11 +65,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
-                  SQL
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
-                  Python (pandas)
+                  BigQuery
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
@@ -89,7 +86,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
-                  Workforce Planning
+                  Workforce Planning & Forecasting
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
@@ -109,7 +106,7 @@ export default function AboutPage() {
             {/* Leadership */}
             <div className="bg-bg-secondary rounded-2xl p-8 border-l-4 border-l-accent-purple">
               <h3 className="font-display text-[1.5rem] leading-[1.3] text-text-primary mb-6">
-                Leadership
+                Leadership & Tools
               </h3>
               <ul className="space-y-3 text-text-secondary text-base md:text-lg">
                 <li className="flex items-center gap-3">
@@ -122,15 +119,15 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
-                  Cross-functional Collaboration
+                  ChatGPT Enterprise (custom GPTs)
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
-                  Training & Development
+                  ClickUp
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
-                  Change Management
+                  Greenhouse (ATS)
                 </li>
               </ul>
             </div>
@@ -142,36 +139,31 @@ export default function AboutPage() {
       <section className="py-24 md:py-32">
         <Container>
           <h2 className="font-display text-[2rem] md:text-[2.5rem] leading-[1.2] text-text-primary mb-16">
-            My Approach
+            What Makes Me Different
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             <div>
               <h3 className="font-display text-[1.5rem] leading-[1.3] text-accent-coral mb-4">
-                Data tells a story
+                Strategic Partnership
               </h3>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                Numbers alone don&apos;t drive change—narratives do. I focus on
-                translating complex data into clear, compelling stories that
-                resonate with stakeholders at every level.
+                I don&apos;t just deliver reports—I embed myself with stakeholders to understand their real problems. I have ongoing conversations with HR and business leaders, and they trust me as a strategic partner, not just a data provider.
               </p>
             </div>
             <div>
               <h3 className="font-display text-[1.5rem] leading-[1.3] text-accent-coral mb-4">
-                Build for scale
+                Curiosity-Driven
               </h3>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                Every report and dashboard I create is designed to grow with
-                the organization. Sustainable solutions over quick fixes.
+                I get lost in challenging business problems. The $55M Onboarding recommendation didn&apos;t come from a request—it came from digging into attrition data and asking &apos;why are we losing doctors before they even start?&apos;
               </p>
             </div>
             <div>
               <h3 className="font-display text-[1.5rem] leading-[1.3] text-accent-coral mb-4">
-                Empower others
+                Hands-On Builder
               </h3>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                The best analytics teams make themselves less indispensable,
-                not more. I prioritize training and documentation so others
-                can self-serve.
+                Despite leading analytics for a 23K+ employee organization, I&apos;m hands-on 95% of the time. With a team of two, there&apos;s no room for pure strategy—I&apos;m in the data, writing queries, building dashboards, and iterating on forecasts.
               </p>
             </div>
           </div>
