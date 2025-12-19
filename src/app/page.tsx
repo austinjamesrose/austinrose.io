@@ -8,7 +8,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-[radial-gradient(ellipse_at_center_top,rgba(232,124,92,0.08)_0%,transparent_50%)]">
         <Container className="text-center">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-[896px] mx-auto">
             {/* Decorative icon */}
             <div className="text-accent-coral text-3xl mb-8 animate-pulse-slow">&#10022;</div>
 
@@ -23,7 +23,7 @@ export default function HomePage() {
             </p>
 
             {/* Value prop */}
-            <p className="text-text-secondary mb-10 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
+            <p className="text-text-secondary mb-10 max-w-[800px] mx-auto text-lg md:text-xl leading-relaxed">
               People Analytics leader who partners with HR and business leaders to turn workforce data into strategic action. Proven track record building analytics infrastructure, delivering executive-level insights, and driving measurable business outcomes.
             </p>
 
@@ -49,7 +49,7 @@ export default function HomePage() {
       {/* Impact Metrics Section */}
       <section className="py-20 bg-bg-secondary border-t border-b border-white/10">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 text-center max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 text-center max-w-[1024px] mx-auto">
             <div className="relative md:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-24 md:after:w-px md:after:bg-white/10 md:last:after:hidden">
               <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-accent-coral">
                 $55M
@@ -134,7 +134,7 @@ export default function HomePage() {
       {/* About Preview */}
       <section className="py-32 bg-bg-secondary">
         <Container>
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-[896px] mx-auto text-center">
             {/* Headshot */}
             <div className="mb-8">
               <Image
@@ -165,7 +165,7 @@ export default function HomePage() {
       {/* Contact CTA */}
       <section className="py-32">
         <Container>
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-[896px] mx-auto text-center">
             <h2 className="font-display text-[2.5rem] md:text-[3rem] leading-[1.2] text-text-primary mb-6">
               Let&apos;s connect.
             </h2>

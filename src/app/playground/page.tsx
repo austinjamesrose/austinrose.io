@@ -13,7 +13,7 @@ export default function PlaygroundPage() {
       {/* Hero */}
       <section className="py-32">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-[768px] mx-auto text-center">
             <h1 className="font-display text-[2.5rem] leading-[1.2] text-text-primary mb-6">
               Data Playground
             </h1>

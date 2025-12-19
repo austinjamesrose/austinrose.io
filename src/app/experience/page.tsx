@@ -96,7 +96,7 @@ export default function ExperiencePage() {
           <h1 className="font-display text-[3rem] md:text-[4rem] leading-[1.1] text-text-primary mb-6">
             Experience
           </h1>
-          <p className="text-text-secondary text-lg md:text-xl max-w-2xl">
+          <p className="text-text-secondary text-lg md:text-xl max-w-[672px]">
             My journey from recruiting to People Analytics leadership.
           </p>
         </Container>
