@@ -2,13 +2,21 @@
 
 import Link from "next/link";
 import { Container } from "@/components/layout";
-import { Sparkle, MagneticButton, ScrollReveal } from "@/components/animations";
+import { Sparkle, MagneticButton, ScrollReveal, ParticleBackground } from "@/components/animations";
 import { m } from "framer-motion";
 
 export function HeroSection() {
   return (
-    <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-[radial-gradient(ellipse_at_center_top,rgba(232,124,92,0.08)_0%,transparent_50%)]">
-      <Container className="text-center">
+    <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
+      {/* Particle Background */}
+      <div className="absolute inset-0">
+        <ParticleBackground particleCount={50} connectionDistance={100} />
+      </div>
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center_top,rgba(232,124,92,0.08)_0%,transparent_50%)] pointer-events-none" />
+
+      <Container className="relative z-10 text-center">
         <div className="max-w-[896px] mx-auto">
           {/* Decorative icon with sparkle */}
           <ScrollReveal delay={0.1}>

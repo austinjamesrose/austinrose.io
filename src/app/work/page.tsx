@@ -1,11 +1,22 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout";
+import { DataVizPattern } from "@/components/animations";
 
 export const metadata: Metadata = {
   title: "Work",
   description:
     "Explore Austin Rose's portfolio of People Analytics projects and data visualization work.",
+};
+
+// Map categories to pattern types
+const categoryPatterns: Record<string, "bars" | "nodes" | "waves" | "scatter" | "flow"> = {
+  "Executive Reporting": "bars",
+  "Data Infrastructure": "nodes",
+  "Process Optimization": "flow",
+  "Tools & Automation": "scatter",
+  "Data Governance": "nodes",
+  "Predictive Analytics": "waves",
 };
 
 const projects = [
@@ -127,17 +138,11 @@ export default function WorkPage() {
                 href={`/work/${project.id}`}
                 className="group bg-gradient-to-br from-[#1e1e1e]/80 to-[#141414]/90 border border-white/[0.08] rounded-2xl p-6 hover:border-accent-coral/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 transition-all duration-300"
               >
-                {/* Placeholder for visualization preview */}
-                <div className="aspect-video bg-bg-tertiary rounded-lg mb-6 flex items-center justify-center gap-2 p-8">
-                  {/* Abstract data visualization pattern */}
-                  <div className="flex items-end gap-1.5 h-20">
-                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '45%' }}></div>
-                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '75%' }}></div>
-                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '55%' }}></div>
-                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '90%' }}></div>
-                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '65%' }}></div>
-                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '80%' }}></div>
-                  </div>
+                {/* Data visualization preview */}
+                <div className="mb-6">
+                  <DataVizPattern
+                    pattern={categoryPatterns[project.category] || "bars"}
+                  />
                 </div>
 
                 <span className="text-accent-teal text-xs font-semibold uppercase tracking-wider">
