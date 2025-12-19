@@ -72,44 +72,53 @@ export default function ExperiencePage() {
       {/* Timeline */}
       <section className="pb-24 md:pb-32">
         <Container>
-          <div className="space-y-12 md:space-y-0">
-            {experiences.map((exp, index) => (
-              <div
-                key={exp.period}
-                className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 pb-12 md:pb-16 border-b border-border-subtle last:border-0"
-              >
-                {/* Left column - metadata */}
-                <div className="md:col-span-4 lg:col-span-3">
-                  <span className="text-accent-coral text-base md:text-lg font-medium">
-                    {exp.period}
-                  </span>
-                  <p className="text-text-tertiary text-sm md:text-base mt-1">
-                    {exp.location}
-                  </p>
-                </div>
+          {/* Timeline wrapper with vertical line */}
+          <div className="relative pl-8">
+            {/* Vertical gradient line */}
+            <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-coral to-accent-coral/10" />
 
-                {/* Right column - content */}
-                <div className="md:col-span-8 lg:col-span-9">
-                  <h3 className="font-display text-[1.5rem] md:text-[1.75rem] leading-[1.3] text-text-primary">
-                    {exp.title}
-                  </h3>
-                  <p className="text-text-secondary text-base md:text-lg mt-1 mb-6">
-                    {exp.company}
-                  </p>
-                  <ul className="space-y-3">
-                    {exp.highlights.map((highlight, i) => (
-                      <li
-                        key={i}
-                        className="text-text-secondary text-base md:text-lg leading-relaxed flex gap-3"
-                      >
-                        <span className="text-accent-coral mt-2">•</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
+            <div className="space-y-12 md:space-y-0">
+              {experiences.map((exp, index) => (
+                <div
+                  key={exp.period}
+                  className="relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 pb-12 md:pb-16 border-b border-border-subtle last:border-0"
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute -left-[calc(2rem+6px)] top-2 w-3 h-3 rounded-full bg-bg-primary border-2 border-accent-coral" />
+
+                  {/* Left column - metadata */}
+                  <div className="md:col-span-4 lg:col-span-3">
+                    <span className="inline-block px-3 py-1 bg-accent-coral/10 border border-accent-coral/30 rounded-full text-sm text-accent-coral">
+                      {exp.period}
+                    </span>
+                    <p className="text-text-tertiary text-sm md:text-base mt-3">
+                      {exp.location}
+                    </p>
+                  </div>
+
+                  {/* Right column - content */}
+                  <div className="md:col-span-8 lg:col-span-9">
+                    <h3 className="font-display text-[1.5rem] md:text-[1.75rem] leading-[1.3] text-text-primary">
+                      {exp.title}
+                    </h3>
+                    <p className="text-text-secondary text-base md:text-lg mt-1 mb-6">
+                      {exp.company}
+                    </p>
+                    <ul className="space-y-3">
+                      {exp.highlights.map((highlight, i) => (
+                        <li
+                          key={i}
+                          className="text-text-secondary text-base md:text-lg leading-relaxed flex gap-3"
+                        >
+                          <span className="text-accent-coral mt-2">•</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </Container>
       </section>

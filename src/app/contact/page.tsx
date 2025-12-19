@@ -30,7 +30,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="py-24 md:py-32">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 animate-fade-in">
             <div>
               <h1 className="font-display text-[3rem] md:text-[4rem] leading-[1.1] text-text-primary mb-8">
                 Let&apos;s Connect
@@ -57,7 +57,7 @@ export default function ContactPage() {
                     href={link.href}
                     target={link.name !== "Email" ? "_blank" : undefined}
                     rel={link.name !== "Email" ? "noopener noreferrer" : undefined}
-                    className="block bg-bg-secondary border border-border-subtle rounded-xl p-6 hover:border-accent-coral/30 hover:bg-bg-tertiary transition-all"
+                    className="group block bg-bg-secondary border border-border-subtle rounded-xl p-6 hover:border-accent-coral/30 hover:bg-white/[0.03] transition-all duration-300"
                   >
                     <div className="flex items-center justify-between">
                       <div>
@@ -68,7 +68,7 @@ export default function ContactPage() {
                           {link.description}
                         </p>
                       </div>
-                      <span className="text-text-tertiary text-2xl">&rarr;</span>
+                      <span className="text-text-tertiary text-2xl group-hover:translate-x-1 transition-transform duration-200">&rarr;</span>
                     </div>
                   </a>
                 ))}

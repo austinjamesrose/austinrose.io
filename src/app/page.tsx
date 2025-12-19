@@ -3,13 +3,13 @@ import { Container } from "@/components/layout";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="animate-fade-in">
       {/* Hero Section */}
-      <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+      <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-[radial-gradient(ellipse_at_center_top,rgba(232,124,92,0.08)_0%,transparent_50%)]">
         <Container className="text-center">
           <div className="max-w-4xl mx-auto">
             {/* Decorative icon */}
-            <div className="text-accent-coral text-3xl mb-8">&#10022;</div>
+            <div className="text-accent-coral text-3xl mb-8 animate-pulse-slow">&#10022;</div>
 
             {/* Name */}
             <h1 className="font-display text-[4.5rem] md:text-[5.5rem] leading-[1.05] text-text-primary mb-6">
@@ -22,7 +22,7 @@ export default function HomePage() {
             </p>
 
             {/* Value prop */}
-            <p className="text-text-secondary mb-10 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
+            <p className="text-text-secondary mb-10 max-w-xl mx-auto text-lg md:text-xl leading-relaxed">
               I transform workforce data into strategic decisions that drive
               business outcomes.
             </p>
@@ -31,13 +31,13 @@ export default function HomePage() {
             <div className="flex gap-4 justify-center">
               <Link
                 href="/work"
-                className="bg-accent-coral text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-all duration-[var(--transition-base)]"
+                className="bg-accent-coral text-white px-6 py-3 rounded-lg font-medium hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-coral/30 transition-all duration-200"
               >
                 View My Work
               </Link>
               <Link
                 href="/contact"
-                className="border border-text-tertiary text-text-primary px-6 py-3 rounded-lg font-medium hover:border-accent-coral hover:text-accent-coral transition-all duration-[var(--transition-base)]"
+                className="border border-text-tertiary text-text-primary px-6 py-3 rounded-lg font-medium hover:border-accent-coral hover:text-accent-coral hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-coral/30 transition-all duration-200"
               >
                 Get in Touch
               </Link>
@@ -47,10 +47,10 @@ export default function HomePage() {
       </section>
 
       {/* Impact Metrics Section */}
-      <section className="py-32 bg-bg-secondary">
+      <section className="py-20 bg-bg-secondary border-t border-b border-white/10">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 text-center max-w-5xl mx-auto">
-            <div>
+            <div className="relative md:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-24 md:after:w-px md:after:bg-white/10 md:last:after:hidden">
               <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-accent-coral">
                 $55M
               </p>
@@ -58,7 +58,7 @@ export default function HomePage() {
                 incremental revenue delivered
               </p>
             </div>
-            <div>
+            <div className="relative md:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-24 md:after:w-px md:after:bg-white/10 md:last:after:hidden">
               <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-text-primary">
                 23K+
               </p>
@@ -66,7 +66,7 @@ export default function HomePage() {
                 employees supported
               </p>
             </div>
-            <div>
+            <div className="relative md:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-24 md:after:w-px md:after:bg-white/10 md:last:after:hidden">
               <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-text-primary">
                 950+
               </p>
@@ -175,6 +175,6 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
-    </>
+    </div>
   );
 }

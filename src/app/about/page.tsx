@@ -49,44 +49,89 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {/* Data & Analytics */}
-            <div className="bg-bg-tertiary rounded-2xl p-8">
+            <div className="bg-bg-secondary rounded-2xl p-8 border-l-4 border-l-accent-coral">
               <h3 className="font-display text-[1.5rem] leading-[1.3] text-text-primary mb-6">
                 Data & Analytics
               </h3>
               <ul className="space-y-3 text-text-secondary text-base md:text-lg">
-                <li>Workday Report Writer</li>
-                <li>Tableau</li>
-                <li>SQL</li>
-                <li>Python (pandas)</li>
-                <li>Excel / Google Sheets</li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Workday Report Writer
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Tableau
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  SQL
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Python (pandas)
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Excel / Google Sheets
+                </li>
               </ul>
             </div>
 
             {/* Strategy */}
-            <div className="bg-bg-tertiary rounded-2xl p-8">
+            <div className="bg-bg-secondary rounded-2xl p-8 border-l-4 border-l-accent-teal">
               <h3 className="font-display text-[1.5rem] leading-[1.3] text-text-primary mb-6">
                 Strategy
               </h3>
               <ul className="space-y-3 text-text-secondary text-base md:text-lg">
-                <li>Executive Reporting</li>
-                <li>Workforce Planning</li>
-                <li>Talent Acquisition Analytics</li>
-                <li>Data Governance</li>
-                <li>Process Optimization</li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Executive Reporting
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Workforce Planning
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Talent Acquisition Analytics
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Data Governance
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Process Optimization
+                </li>
               </ul>
             </div>
 
             {/* Leadership */}
-            <div className="bg-bg-tertiary rounded-2xl p-8">
+            <div className="bg-bg-secondary rounded-2xl p-8 border-l-4 border-l-accent-purple">
               <h3 className="font-display text-[1.5rem] leading-[1.3] text-text-primary mb-6">
                 Leadership
               </h3>
               <ul className="space-y-3 text-text-secondary text-base md:text-lg">
-                <li>Team Management</li>
-                <li>Stakeholder Communication</li>
-                <li>Cross-functional Collaboration</li>
-                <li>Training & Development</li>
-                <li>Change Management</li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Team Management
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Stakeholder Communication
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Cross-functional Collaboration
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Training & Development
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+                  Change Management
+                </li>
               </ul>
             </div>
           </div>

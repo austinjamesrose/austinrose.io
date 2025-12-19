@@ -16,7 +16,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-bg-primary/80 backdrop-blur-md border-b border-border-subtle">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
       <nav className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link
@@ -34,18 +34,16 @@ export function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`text-sm font-medium transition-colors duration-[var(--transition-base)] relative
+                  className={`text-sm font-medium transition-colors duration-200 relative
+                    after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent-coral after:transition-all after:duration-300
                     ${
                       isActive
-                        ? "text-accent-coral"
-                        : "text-text-secondary hover:text-text-primary"
+                        ? "text-accent-coral after:w-full"
+                        : "text-text-secondary hover:text-text-primary after:w-0 hover:after:w-full"
                     }
                   `}
                 >
                   {link.label}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-coral rounded-full" />
-                  )}
                 </Link>
               </li>
             );

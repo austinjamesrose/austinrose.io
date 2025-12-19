@@ -108,16 +108,22 @@ export default function WorkPage() {
               <Link
                 key={project.id}
                 href={`/work/${project.id}`}
-                className="group bg-bg-secondary border border-border-subtle rounded-xl p-6 hover:border-accent-coral/30 hover:-translate-y-1 transition-all duration-300"
+                className="group bg-gradient-to-br from-[#1e1e1e]/80 to-[#141414]/90 border border-white/[0.08] rounded-2xl p-6 hover:border-accent-coral/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 transition-all duration-300"
               >
                 {/* Placeholder for visualization preview */}
-                <div className="aspect-video bg-bg-tertiary rounded-lg mb-6 flex items-center justify-center">
-                  <span className="text-text-tertiary text-sm">
-                    Preview coming soon
-                  </span>
+                <div className="aspect-video bg-bg-tertiary rounded-lg mb-6 flex items-center justify-center gap-2 p-8">
+                  {/* Abstract data visualization pattern */}
+                  <div className="flex items-end gap-1.5 h-20">
+                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '45%' }}></div>
+                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '75%' }}></div>
+                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '55%' }}></div>
+                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '90%' }}></div>
+                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '65%' }}></div>
+                    <div className="w-8 bg-white/10 rounded-sm" style={{ height: '80%' }}></div>
+                  </div>
                 </div>
 
-                <span className="text-accent-teal text-xs font-medium uppercase tracking-wider">
+                <span className="text-accent-teal text-xs font-semibold uppercase tracking-wider">
                   {project.category}
                 </span>
                 <h3 className="font-display text-[1.25rem] leading-[1.4] text-text-primary mt-3 mb-2 group-hover:text-accent-coral transition-colors">

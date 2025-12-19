@@ -8,20 +8,34 @@
   --bg-primary: #0f0f0f;
   --bg-secondary: #1a1a1a;
   --bg-tertiary: #242424;
+  --bg-card: #1a1a1a;
 
   /* Accents */
   --accent-primary: #E87C5C;
   --accent-secondary: #F4A261;
   --accent-tertiary: #2A9D8F;
+  --accent-purple: #A78BFA;
 
-  /* Text */
+  /* Text - improved contrast for accessibility */
   --text-primary: #F5F5F5;
-  --text-secondary: #A3A3A3;
-  --text-tertiary: #6B6B6B;
+  --text-secondary: #D1D5DB;
+  --text-tertiary: #9CA3AF;
+  --text-muted: #6B6B6B;
 
-  /* Utility */
+  /* Borders */
   --border-subtle: #2A2A2A;
+  --border-subtle-light: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(232, 124, 92, 0.3);
+
+  /* Glows & Effects */
   --glow-coral: rgba(232, 124, 92, 0.15);
+  --glow-coral-strong: rgba(232, 124, 92, 0.3);
+
+  /* Gradients */
+  --gradient-coral: linear-gradient(135deg, #E87C5C 0%, #F4A261 100%);
+  --gradient-hero: radial-gradient(ellipse at center top, rgba(232, 124, 92, 0.08) 0%, transparent 50%);
+  --gradient-card: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
+  --gradient-timeline: linear-gradient(180deg, var(--accent-primary) 0%, rgba(232, 124, 92, 0.1) 100%);
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -34,16 +48,21 @@
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
   --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-card: var(--bg-card);
 
   --color-accent-coral: var(--accent-primary);
   --color-accent-amber: var(--accent-secondary);
   --color-accent-teal: var(--accent-tertiary);
+  --color-accent-purple: var(--accent-purple);
 
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
 
   --color-border-subtle: var(--border-subtle);
+  --color-border-subtle-light: var(--border-subtle-light);
+  --color-border-hover: var(--border-hover);
 
   /* Fonts */
   --font-display: var(--font-fraunces);
@@ -100,10 +119,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-/* Selection highlight */
+/* Selection highlight - subtle coral */
 ::selection {
-  background-color: var(--accent-primary);
-  color: var(--bg-primary);
+  background-color: var(--glow-coral-strong);
+  color: white;
 }
 
 /* Focus states */
@@ -145,6 +164,67 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Page content fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Star/icon pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Subtle float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Underline grow animation for nav links */
+@keyframes underlineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
 /* Reduced motion preference */
