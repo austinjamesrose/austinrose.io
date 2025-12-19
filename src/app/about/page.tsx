@@ -176,7 +176,7 @@ export default function AboutPage() {
                 Strategic Partnership
               </h3>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                I don&apos;t just deliver reports—I embed myself with stakeholders to understand their real problems. I have ongoing conversations with HR and business leaders, and they trust me as a strategic partner, not just a data provider.
+                I don&apos;t just deliver reports - I embed myself with stakeholders to understand their real problems. Through ongoing conversations with HR and business leaders, I&apos;ve become a trusted advisor, not just a data provider.
               </p>
             </div>
             <div>
@@ -184,7 +184,7 @@ export default function AboutPage() {
                 Curiosity-Driven
               </h3>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                I get lost in challenging business problems. The $55M Onboarding recommendation didn&apos;t come from a request—it came from digging into attrition data and asking &apos;why are we losing doctors before they even start?&apos;
+                I dig into challenging business problems. The most impactful recommendations don&apos;t often come from requests, they come from naturally exploring critical data and connecting the dots.
               </p>
             </div>
             <div>
@@ -192,7 +192,7 @@ export default function AboutPage() {
                 Hands-On Builder
               </h3>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                Despite leading analytics for a 23K+ employee organization, I&apos;m hands-on 95% of the time. With a team of two, there&apos;s no room for pure strategy—I&apos;m in the data, writing queries, building dashboards, and iterating on forecasts.
+                Leading analytics for a 23K+ employee organization with a lean team, I&apos;m hands-on each and every day. There&apos;s no room for pure strategy - I&apos;m in the data, writing queries, building dashboards, and iterating on forecasts.
               </p>
             </div>
           </div>

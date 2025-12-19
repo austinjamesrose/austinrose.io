@@ -216,14 +216,15 @@ All animation components are client components (`'use client'`) and respect `pre
 
 #### `HeroSection` (`src/components/home/HeroSection.tsx`)
 - Client component with particle background
-- Staggered `ScrollReveal` animations on each element
+- 2-row layout: smaller inline headshot (120px) + greeting text in row 1, description in row 2
+- `ScrollReveal` animations on content blocks
 - `Sparkle` wrapper on decorative icon
 - `MagneticButton` wrappers on CTAs
 
 #### `StatsSection` (`src/components/home/StatsSection.tsx`)
 - Client component with animated stats
-- Uses `CountUp` for each metric ($55M, 23K+, 950+)
-- Staggered reveal with `ScrollReveal`
+- Uses `CountUp` for each metric ($55M, 23K+, 1k+, 200+)
+- 4-column grid layout with staggered reveal
 
 ## Layout Patterns
 
@@ -264,8 +265,8 @@ text-lg md:text-xl leading-relaxed
 
 ### Homepage (`/`)
 Layout: Centered sections, full-width metrics grid
-1. **Hero** (`HeroSection` component) - Particle background, radial gradient overlay, sparkle icon, magnetic CTAs, staggered scroll reveals
-2. **Impact Metrics** (`StatsSection` component) - 3-col grid with animated count-up ($55M, 23K+, 950+), staggered reveals
+1. **Hero** (`HeroSection` component) - 2-row layout: smaller inline headshot (120px) + greeting in row 1, full-width description in row 2. Particle background, radial gradient overlay, sparkle icon, magnetic CTAs
+2. **Impact Metrics** (`StatsSection` component) - 4-col grid with animated count-up ($55M, 23K+, 1k+, 200+), staggered reveals
 3. **Featured Work** (2-col grid) - Project cards with gradient background and hover effects
 4. **About Preview** (`max-w-4xl`) - Circular headshot (144px), career narrative hook
 5. **Contact CTA** (`max-w-4xl`) - Growth-focused messaging
@@ -286,6 +287,7 @@ Layout: Full-width grid
 ### Experience (`/experience`)
 Layout: Visual timeline with gradient connector
 - **Hero** - Title + subtitle
+- **Career Narrative** - First-person narrative about analytical curiosity evolving into People Analytics leadership
 - **Timeline** - Vertical gradient line (`from-accent-coral to-accent-coral/10`), dot markers, date badges with coral pill styling
 - 6 positions: TAG (Head of People Analytics), Chime, Vineti, NextRoll, Delivery Hero, Earlier Roles
 - **Education** - Mercer University, BBA Sports Business Management, 2016

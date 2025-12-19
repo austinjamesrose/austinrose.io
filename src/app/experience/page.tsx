@@ -247,14 +247,14 @@ export default function ExperiencePage() {
       </section>
 
       {/* Career Narrative */}
-      <section className="pb-16 md:pb-20">
+      <section className="pb-6 md:pb-8">
         <Container>
           <div className="max-w-[800px]">
             <p className="text-text-secondary text-lg md:text-xl leading-relaxed mb-6">
-              Austin's career tells a story of natural analytical curiosity evolving into People Analytics leadership. Starting in recruiting and business development roles, he was always the person asking "what does the data say?"—tracking conversion rates, analyzing reply rates to outreach, and looking for ways to optimize and automate processes.
+              My career tells a story of natural analytical curiosity evolving into People Analytics leadership. Starting in recruiting and business development roles, I was always the person asking &quot;what does the data say?&quot;—tracking conversion rates, analyzing reply rates to outreach, and looking for ways to optimize and automate processes.
             </p>
             <p className="text-text-secondary text-lg md:text-xl leading-relaxed">
-              That curiosity led to increasingly data-focused recruiting roles at companies like Chime, where he scaled a Data Analytics team from 16 to 59 analysts while simultaneously using funnel data to improve hiring processes. The transition to a dedicated People Analytics role at The Aspen Group was a natural next step—finally getting to focus entirely on the analytical work he'd been drawn to all along.
+              That curiosity led to increasingly data-focused recruiting roles at companies like Chime, where I scaled a Data Analytics team from 16 to 59 analysts while simultaneously using funnel data to improve hiring processes. The transition to a dedicated People Analytics role at The Aspen Group was a natural next step—finally getting to focus entirely on the analytical work I&apos;d been drawn to all along.
             </p>
           </div>
         </Container>

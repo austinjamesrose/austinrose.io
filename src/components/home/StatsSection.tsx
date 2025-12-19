@@ -19,21 +19,15 @@ const stats = [
     highlight: false,
   },
   {
-    value: 1000,
-    suffix: "+",
-    label: "custom Workday reports built",
-    highlight: false,
-  },
-  {
-    value: 800,
-    suffix: "K",
-    label: "yearly report runs",
+    value: 1,
+    suffix: "k+",
+    label: "custom reports built",
     highlight: false,
   },
   {
     value: 200,
     suffix: "+",
-    label: "yearly hours automated with AI",
+    label: "hours of work automated with AI in 2025",
     highlight: false,
   },
 ];
@@ -44,7 +38,7 @@ export function StatsSection() {
       <Container>
         <ScrollReveal
           variants={staggerContainer}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 text-center max-w-[1400px] mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-center max-w-[1200px] mx-auto"
         >
           {stats.map((stat, index) => (
             <ScrollReveal
