@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Austin Rose Portfolio
+
+Personal portfolio website for Austin Rose, Head of People Analytics at The Aspen Group.
+
+**Live:** [austinrose.io](https://austinrose.io)
+
+## Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| [Next.js 16](https://nextjs.org) | React framework with App Router |
+| [TypeScript](https://www.typescriptlang.org) | Type safety |
+| [Tailwind CSS v4](https://tailwindcss.com) | Utility-first styling |
+| [Framer Motion](https://www.framer.com/motion) | Animations |
+| [Vercel](https://vercel.com) | Hosting & deployment |
+
+## Features
+
+- **Dark mode design** with coral accent colors
+- **Responsive layout** with mobile hamburger menu
+- **Scroll-triggered animations** throughout
+- **Interactive timeline** on Experience page with progress tracking
+- **Skills radar chart** with animated SVG
+- **Particle background** on hero section
+- **Accessibility support** with reduced motion fallbacks
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── page.tsx           # Homepage
+│   ├── about/             # About page with skills radar
+│   ├── work/              # Portfolio projects
+│   ├── experience/        # Interactive career timeline
+│   ├── playground/        # Coming soon
+│   └── contact/           # Contact info & resume download
+├── components/
+│   ├── animations/        # Reusable animation components
+│   ├── home/              # Homepage-specific components
+│   └── layout/            # Header, Footer, Container
+├── hooks/                 # Custom React hooks
+└── lib/                   # Utilities and animation variants
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Deployed automatically via Vercel on push to `main`.
 
-## Learn More
+- **Production:** https://austinrose.io
+- **Preview:** Auto-generated for feature branches
 
-To learn more about Next.js, take a look at the following resources:
+## Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [ARCHITECTURE.md](./ARCHITECTURE.md) - Detailed technical documentation
+- [WORKFLOW.md](./WORKFLOW.md) - Git workflow and deployment process
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Email:** austin@austinrose.io
+- **LinkedIn:** [linkedin.com/in/roseaustin](https://linkedin.com/in/roseaustin)
+- **GitHub:** [github.com/austinjamesrose](https://github.com/austinjamesrose)
