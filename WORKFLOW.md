@@ -20,9 +20,10 @@ git pull origin main
 git checkout -b feature/description-of-change
 
 # Examples:
-git checkout -b feature/add-project-filtering
+git checkout -b feature/add-blog-search
 git checkout -b fix/mobile-nav-issue
 git checkout -b design/update-color-scheme
+git checkout -b content/new-blog-post
 ```
 
 ### During Development
@@ -72,11 +73,47 @@ git branch -d feature/your-branch-name
 
 | Prefix | Use Case | Example |
 |--------|----------|---------|
-| `feature/` | New functionality | `feature/add-blog-section` |
+| `feature/` | New functionality | `feature/add-blog-search` |
 | `fix/` | Bug fixes | `fix/mobile-menu-overlap` |
 | `design/` | Visual/UI changes | `design/update-typography` |
 | `refactor/` | Code improvements | `refactor/component-structure` |
-| `content/` | Content updates | `content/update-experience` |
+| `content/` | Content updates | `content/new-blog-post` |
+
+## Blog Content Workflow
+
+### Adding a New Post
+
+1. Create MDX file in `content/posts/`:
+   ```bash
+   # Create new post
+   touch content/posts/my-new-post.mdx
+   ```
+
+2. Add frontmatter:
+   ```yaml
+   ---
+   title: "My New Post"
+   date: "2025-01-15"
+   description: "Brief description"
+   tags: ["analytics", "career"]
+   featured: false
+   draft: false
+   ---
+   ```
+
+3. Write content in Markdown/MDX format
+
+4. Preview locally with `npm run dev`
+
+5. Commit and push to deploy
+
+### Publishing a Draft
+
+Set `draft: false` in frontmatter to publish a post.
+
+### Featuring a Post
+
+Set `featured: true` to show the post on the homepage.
 
 ## Useful Commands
 
@@ -118,6 +155,9 @@ npm run build
 
 # Run production build locally
 npm start
+
+# Lint code
+npm run lint
 ```
 
 ## Environment
@@ -133,24 +173,28 @@ npm start
 git checkout main && git pull
 
 # 2. Create feature branch
-git checkout -b design/improve-hero-section
+git checkout -b content/new-analytics-post
 
-# 3. Make changes, test locally
+# 3. Create content
+touch content/posts/my-analytics-journey.mdx
+# ... add frontmatter and content ...
+
+# 4. Test locally
 npm run dev
-# ... edit files ...
+# ... view at localhost:3000 ...
 
-# 4. Commit and push for preview
+# 5. Commit and push for preview
 git add .
-git commit -m "Improve hero section layout and animations"
-git push origin design/improve-hero-section
+git commit -m "Add new blog post: My Analytics Journey"
+git push origin content/new-analytics-post
 
-# 5. Check Vercel preview URL (from GitHub or Vercel dashboard)
+# 6. Check Vercel preview URL (from GitHub or Vercel dashboard)
 
-# 6. If happy, merge to main
+# 7. If happy, merge to main
 git checkout main
-git merge design/improve-hero-section
+git merge content/new-analytics-post
 git push origin main
 
-# 7. Clean up
-git branch -d design/improve-hero-section
+# 8. Clean up
+git branch -d content/new-analytics-post
 ```

@@ -1,28 +1,22 @@
 import type { Metadata } from "next";
-import { Fraunces, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Serif } from "next/font/google";
 import { Header, Footer } from "@/components/layout";
-import { MotionProvider } from "@/components/animations";
+import { ThemeProvider } from "@/components/providers";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const ibmPlexSerif = IBM_Plex_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -70,15 +64,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fraunces.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${ibmPlexMono.variable} ${ibmPlexSerif.variable} antialiased flex min-h-screen flex-col`}
       >
-        <MotionProvider>
+        <ThemeProvider>
           <Header />
-          <main className="min-h-screen pt-16">{children}</main>
+          <main className="flex-1">{children}</main>
           <Footer />
-        </MotionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

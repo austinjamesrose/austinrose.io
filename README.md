@@ -1,6 +1,6 @@
 # Austin Rose Portfolio
 
-Personal portfolio website for Austin Rose, Head of People Analytics at The Aspen Group.
+Personal portfolio and blog for Austin Rose, Head of People Analytics at The Aspen Group.
 
 **Live:** [austinrose.io](https://austinrose.io)
 
@@ -11,18 +11,18 @@ Personal portfolio website for Austin Rose, Head of People Analytics at The Aspe
 | [Next.js 16](https://nextjs.org) | React framework with App Router |
 | [TypeScript](https://www.typescriptlang.org) | Type safety |
 | [Tailwind CSS v4](https://tailwindcss.com) | Utility-first styling |
-| [Framer Motion](https://www.framer.com/motion) | Animations |
+| [MDX](https://mdxjs.com) | Blog posts with JSX support |
+| [next-themes](https://github.com/pacocoursey/next-themes) | Light/dark mode |
 | [Vercel](https://vercel.com) | Hosting & deployment |
 
 ## Features
 
-- **Dark mode design** with coral accent colors
-- **Responsive layout** with mobile hamburger menu
-- **Scroll-triggered animations** throughout
-- **Interactive timeline** on Experience page with progress tracking
-- **Skills radar chart** with animated SVG
-- **Particle background** on hero section
-- **Accessibility support** with reduced motion fallbacks
+- **AstroPaper-inspired design** - Clean, typography-focused minimal aesthetic
+- **Light/dark mode** - System preference detection with manual toggle
+- **MDX blog** - Write posts in Markdown with tag filtering
+- **Responsive layout** - Mobile hamburger menu
+- **Coral accent color** - Consistent brand across both themes
+- **Accessibility** - Reduced motion support, dashed focus outlines
 
 ## Project Structure
 
@@ -30,17 +30,17 @@ Personal portfolio website for Austin Rose, Head of People Analytics at The Aspe
 src/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Homepage
-│   ├── about/             # About page with skills radar
-│   ├── work/              # Portfolio projects
-│   ├── experience/        # Interactive career timeline
-│   ├── playground/        # Coming soon
-│   └── contact/           # Contact info & resume download
+│   ├── posts/             # Blog listing and individual posts
+│   ├── projects/          # Portfolio projects
+│   ├── about/             # About page
+│   └── experience/        # Career timeline
 ├── components/
-│   ├── animations/        # Reusable animation components
-│   ├── home/              # Homepage-specific components
-│   └── layout/            # Header, Footer, Container
-├── hooks/                 # Custom React hooks
-└── lib/                   # Utilities and animation variants
+│   ├── blog/              # PostCard, PostList, TagList, MDXComponents
+│   ├── layout/            # Header, Footer, Container, ThemeToggle
+│   └── providers/         # ThemeProvider
+├── lib/                   # Utilities (posts.ts)
+content/
+└── posts/                 # MDX blog posts
 ```
 
 ## Getting Started
@@ -61,6 +61,23 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) to view locally.
 
+## Adding Blog Posts
+
+Create a new MDX file in `content/posts/`:
+
+```mdx
+---
+title: "Post Title"
+date: "2025-01-01"
+description: "Brief description"
+tags: ["tag1", "tag2"]
+featured: false
+draft: false
+---
+
+Your content here...
+```
+
 ## Deployment
 
 Deployed automatically via Vercel on push to `main`.
@@ -72,6 +89,7 @@ Deployed automatically via Vercel on push to `main`.
 
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - Detailed technical documentation
 - [WORKFLOW.md](./WORKFLOW.md) - Git workflow and deployment process
+- [CLAUDE.md](./CLAUDE.md) - Quick reference for AI assistants
 
 ## Contact
 

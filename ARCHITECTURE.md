@@ -6,9 +6,12 @@
 |------------|---------|---------|
 | Next.js | 16.1.0 | React framework with App Router |
 | TypeScript | 5.x | Type safety |
-| Tailwind CSS | 4.x | Utility-first styling |
+| Tailwind CSS | 4.x | Utility-first styling (CSS-based config) |
 | React | 19.x | UI library |
-| Framer Motion | 11.x | Animations (LazyMotion for optimized bundle) |
+| next-themes | 0.4.x | Light/dark mode switching |
+| MDX | 3.x | Blog posts with JSX support |
+| gray-matter | - | Frontmatter parsing |
+| reading-time | - | Reading time estimation |
 
 ## Project Structure
 
@@ -16,55 +19,59 @@
 austin-portfolio/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
-│   │   ├── layout.tsx          # Root layout (fonts, header, footer, MotionProvider)
+│   │   ├── layout.tsx          # Root layout (fonts, header, footer, ThemeProvider)
 │   │   ├── page.tsx            # Homepage
 │   │   ├── globals.css         # Design tokens & base styles
+│   │   ├── posts/
+│   │   │   ├── page.tsx        # Blog listing with tag filter
+│   │   │   ├── [slug]/
+│   │   │   │   └── page.tsx    # Individual post (MDX)
+│   │   │   └── tags/
+│   │   │       └── [tag]/
+│   │   │           └── page.tsx # Posts filtered by tag
+│   │   ├── projects/
+│   │   │   └── page.tsx        # Portfolio projects grid
 │   │   ├── about/
-│   │   │   └── page.tsx        # About page (with SkillsRadar)
-│   │   ├── work/
-│   │   │   └── page.tsx        # Portfolio grid (with DataVizPattern)
-│   │   ├── experience/
-│   │   │   └── page.tsx        # Career timeline
-│   │   ├── playground/
-│   │   │   └── page.tsx        # Interactive demos (coming soon)
-│   │   └── contact/
-│   │       └── page.tsx        # Contact page
-│   │
-│   ├── hooks/                  # Custom React hooks
-│   │   ├── index.ts
-│   │   └── useReducedMotion.ts # Accessibility hook for motion preferences
+│   │   │   └── page.tsx        # About page
+│   │   └── experience/
+│   │       └── page.tsx        # Career timeline
 │   │
 │   ├── lib/                    # Utility libraries
-│   │   └── animations/
-│   │       └── variants.ts     # Reusable Framer Motion variants
+│   │   └── posts.ts            # Blog utilities (getAllPosts, getPostBySlug, etc.)
 │   │
 │   └── components/
 │       ├── layout/
 │       │   ├── index.ts        # Barrel export
-│       │   ├── Header.tsx      # Fixed navigation
-│       │   ├── Footer.tsx      # Site footer
-│       │   └── Container.tsx   # Max-width wrapper
+│       │   ├── Header.tsx      # Navigation with mobile menu
+│       │   ├── Footer.tsx      # Site footer with social links
+│       │   ├── Container.tsx   # Max-width wrapper (768px)
+│       │   └── ThemeToggle.tsx # Light/dark/system toggle
 │       │
-│       ├── animations/         # Animation components
+│       ├── blog/               # Blog components
 │       │   ├── index.ts        # Barrel export
-│       │   ├── MotionProvider.tsx    # LazyMotion wrapper
-│       │   ├── ScrollReveal.tsx      # Scroll-triggered fade animations
-│       │   ├── CountUp.tsx           # Animated number counter
-│       │   ├── Sparkle.tsx           # Sparkle micro-interaction
-│       │   ├── MagneticButton.tsx    # Magnetic hover effect
-│       │   ├── ParticleBackground.tsx # Canvas particle animation
-│       │   ├── DataVizPattern.tsx    # SVG data visualization patterns
-│       │   └── SkillsRadar.tsx       # SVG radar chart
+│       │   ├── PostCard.tsx    # Blog post preview card
+│       │   ├── PostList.tsx    # List of post cards
+│       │   ├── TagList.tsx     # Horizontal tag pills
+│       │   └── MDXComponents.tsx # Custom MDX component mappings
 │       │
-│       └── home/               # Homepage-specific components
+│       ├── providers/
+│       │   ├── index.ts
+│       │   └── ThemeProvider.tsx # next-themes wrapper
+│       │
+│       └── animations/         # Minimal animation components
 │           ├── index.ts
-│           ├── HeroSection.tsx # Hero with particles & sparkles
-│           └── StatsSection.tsx # Animated stats with CountUp
+│           ├── MotionProvider.tsx # LazyMotion wrapper (optional)
+│           └── ScrollReveal.tsx   # Scroll-triggered animations (optional)
+│
+├── content/                    # Blog content (outside src)
+│   └── posts/                  # MDX blog posts
+│       └── hello-world.mdx     # Example post
 │
 ├── public/                     # Static assets
-│   ├── resume.pdf              # (to be added)
-│   └── images/
-│       └── headshot.jpg        # Profile photo (circular crop)
+│   ├── images/
+│   │   ├── headshot.jpg        # Homepage profile photo (circular)
+│   │   └── headshot-about.jpg  # About page photo (rectangular)
+│   └── resume.pdf              # Resume download
 │
 ├── package.json
 ├── tsconfig.json
@@ -74,301 +81,284 @@ austin-portfolio/
 
 ## Design System
 
-### Aesthetic: "Refined Data Elegance"
-Dark mode default, inspired by Claude.ai's minimalist approach. Focus on generous whitespace, centered layouts, and data-driven visual hierarchy.
+### Aesthetic: AstroPaper-Inspired
+
+Clean, typography-focused minimal design. Monospace body font creates a technical/developer feel. Light/dark mode with system preference detection.
+
+**Reference:** [AstroPaper Theme](https://astro-paper.pages.dev/)
 
 ### Color Palette
 
-Defined in `globals.css` as CSS custom properties:
+Colors defined in `globals.css` as RGB values (for opacity support):
 
 ```css
-/* Backgrounds */
---bg-primary: #0f0f0f      /* Main background */
---bg-secondary: #1a1a1a    /* Cards, sections */
---bg-tertiary: #242424     /* Elevated elements */
---bg-card: #1a1a1a         /* Card backgrounds */
+/* Light Mode */
+:root {
+  --background: 251, 254, 251;  /* Off-white */
+  --foreground: 40, 39, 40;      /* Near-black */
+  --accent: 217, 99, 74;         /* Coral */
+  --muted: 230, 230, 230;        /* Light gray */
+  --card: 230, 230, 230;         /* Card bg */
+  --border: 228, 225, 225;       /* Borders */
+}
 
-/* Accents */
---accent-primary: #E87C5C  /* Coral - CTAs, highlights */
---accent-secondary: #F4A261 /* Amber - secondary */
---accent-tertiary: #2A9D8F /* Teal - links, tags */
---accent-purple: #A78BFA   /* Purple - skill card accent */
+/* Dark Mode */
+.dark {
+  --background: 33, 39, 55;      /* Navy */
+  --foreground: 234, 237, 243;   /* Off-white */
+  --accent: 232, 124, 92;        /* Coral (brighter) */
+  --muted: 52, 63, 96;           /* Muted navy */
+  --card: 63, 75, 90;            /* Card bg */
+  --border: 71, 85, 105;         /* Borders */
+}
+```
 
-/* Text (improved contrast) */
---text-primary: #F5F5F5    /* Headings */
---text-secondary: #D1D5DB  /* Body text - improved contrast */
---text-tertiary: #9CA3AF   /* Captions */
---text-muted: #6B6B6B      /* Muted text */
-
-/* Borders */
---border-subtle: #2A2A2A
---border-subtle-light: rgba(255, 255, 255, 0.08)
---border-hover: rgba(232, 124, 92, 0.3)
-
-/* Gradients */
---gradient-hero: radial-gradient(ellipse at center top, rgba(232,124,92,0.08) 0%, transparent 50%)
---gradient-card: linear-gradient(135deg, rgba(30,30,30,0.8) 0%, rgba(20,20,20,0.9) 100%)
---gradient-timeline: linear-gradient(180deg, var(--accent-primary) 0%, rgba(232,124,92,0.1) 100%)
+**Usage in Tailwind:**
+```tsx
+className="bg-background text-foreground border-border"
+// or with opacity:
+className="bg-[rgb(var(--background)/0.5)]"
 ```
 
 ### Typography
 
-Three Google Fonts loaded via `next/font`:
+Two Google Fonts loaded via `next/font`:
 
 | Font | CSS Variable | Usage |
 |------|--------------|-------|
-| Fraunces | `--font-fraunces` | Display/headings (serif) |
-| Plus Jakarta Sans | `--font-plus-jakarta` | Body text (sans-serif) |
-| JetBrains Mono | `--font-jetbrains` | Code/data (monospace) |
+| IBM Plex Mono | `--font-mono` | Body text (monospace aesthetic) |
+| IBM Plex Serif | `--font-serif` | Headings/display text |
 
-### Type Scale
-
+**Font Stacks:**
 ```css
---font-size-hero: 4rem     /* 64px - hero text */
---font-size-h1: 2.5rem     /* 40px - page titles */
---font-size-h2: 1.75rem    /* 28px - section titles */
---font-size-h3: 1.25rem    /* 20px - card titles */
---font-size-body: 1rem     /* 16px - body */
---font-size-small: 0.875rem /* 14px - captions */
---font-size-micro: 0.75rem /* 12px - labels */
+--font-body: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+--font-display: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
 ```
 
-### Spacing
-
-```css
---spacing-xs: 0.25rem   /* 4px */
---spacing-sm: 0.5rem    /* 8px */
---spacing-md: 1rem      /* 16px */
---spacing-lg: 2rem      /* 32px */
---spacing-xl: 4rem      /* 64px */
---spacing-2xl: 8rem     /* 128px - section spacing */
---spacing-3xl: 12rem    /* 192px */
-```
+**Base Styles:**
+- Body: 0.9375rem (15px), line-height 1.7
+- Headings: font-weight 500
 
 ## Components
 
 ### Layout Components
 
 #### `Header` (`src/components/layout/Header.tsx`)
-- Fixed position navigation bar with `bg-black/80` and `backdrop-blur-md`
-- Logo ("AR") links to home
-- 6 navigation links with animated underline on hover
-- Active state shows full underline (`after:w-full`)
-- Subtle bottom border (`border-white/5`)
+- Sticky navigation with blur background
+- Logo ("Austin Rose") links to home
+- 4 nav links: Experience, Projects, Posts, About
+- Active state: wavy coral underline (`.active-nav`)
+- Mobile: hamburger menu with slide-down nav
+- Theme toggle on right side
 - Client component (uses `usePathname`)
 
 #### `Footer` (`src/components/layout/Footer.tsx`)
-- Social links: LinkedIn, GitHub, Email
+- Vertically stacked layout (centered)
+- Nav links row
+- Social icons row (GitHub, LinkedIn, Email) with `.social-icon` styling
 - Copyright with dynamic year
-- Secondary navigation links
 - Server component
 
 #### `Container` (`src/components/layout/Container.tsx`)
-- Max-width wrapper (1200px)
-- Horizontal padding (24px)
+- Max-width wrapper (768px - `max-w-3xl`)
+- Horizontal padding (1rem)
 - Polymorphic `as` prop for semantic HTML
 
-### Animation Components
+#### `ThemeToggle` (`src/components/layout/ThemeToggle.tsx`)
+- Circular button with border
+- Cycles through: system → light → dark → system
+- Icons: monitor (system), sun (light), moon (dark)
+- Uses `useIsMounted` to prevent hydration mismatch
+- Client component
 
-All animation components are client components (`'use client'`) and respect `prefers-reduced-motion`.
+### Blog Components
 
-#### `MotionProvider` (`src/components/animations/MotionProvider.tsx`)
-- Wraps app with Framer Motion's `LazyMotion` for optimized bundle size
-- Uses `domAnimation` features (smaller than full motion bundle)
+#### `PostCard` (`src/components/blog/PostCard.tsx`)
+- Displays post title, date, reading time, description
+- Title links to post with accent color on hover
+- Tags displayed as pill buttons
+- Server component
 
-#### `ScrollReveal` (`src/components/animations/ScrollReveal.tsx`)
-- Wrapper for scroll-triggered fade-up animations
-- Props: `variants`, `delay`, `once`, `threshold`, `as`
-- Uses `useInView` from Framer Motion
+#### `PostList` (`src/components/blog/PostList.tsx`)
+- Renders list of PostCard components
+- Accepts posts array prop
+- Server component
 
-#### `CountUp` (`src/components/animations/CountUp.tsx`)
-- Animated number counter triggered on scroll
-- Props: `value`, `prefix`, `suffix`, `duration`, `delay`, `formatOptions`
-- Uses spring physics for smooth counting
+#### `TagList` (`src/components/blog/TagList.tsx`)
+- Horizontal list of tag pills with counts
+- "All" link to `/posts`
+- Each tag links to `/posts/tags/[tag]`
+- Uses `.tag` CSS class
 
-#### `Sparkle` (`src/components/animations/Sparkle.tsx`)
-- Decorative sparkle micro-interactions around children
-- Auto-generates sparkles on 2s interval
-- Uses `AnimatePresence` for enter/exit animations
+#### `MDXComponents` (`src/components/blog/MDXComponents.tsx`)
+- Custom component mappings for MDX
+- Styled headings, links, code blocks, images
+- Used by individual post pages
 
-#### `MagneticButton` (`src/components/animations/MagneticButton.tsx`)
-- Subtle magnetic pull effect toward cursor on hover
-- Props: `strength` (default 0.3)
-- Uses spring physics for smooth movement
+### Provider Components
 
-#### `ParticleBackground` (`src/components/animations/ParticleBackground.tsx`)
-- Canvas-based particle animation for hero background
-- Props: `particleCount` (default 60), `connectionDistance` (default 120)
-- Features: clustering, mouse attraction, connection lines, boundary wrapping
-- Returns `null` when reduced motion preferred
-
-#### `DataVizPattern` (`src/components/animations/DataVizPattern.tsx`)
-- Abstract SVG data visualization patterns for project cards
-- Props: `pattern` ("bars" | "nodes" | "waves" | "scatter" | "flow"), `animate`
-- 5 pattern types mapped to project categories
-
-#### `SkillsRadar` (`src/components/animations/SkillsRadar.tsx`)
-- Animated SVG radar/spider chart for skills visualization
-- Props: `skills` (array of {name, level, color}), `size`
-- Features: grid rings, axis lines, animated polygon, skill points with labels
-
-### Home Components
-
-#### `HeroSection` (`src/components/home/HeroSection.tsx`)
-- Client component with particle background
-- 2-row layout: smaller inline headshot (120px) + greeting text in row 1, description in row 2
-- `ScrollReveal` animations on content blocks
-- `Sparkle` wrapper on decorative icon
-- `MagneticButton` wrappers on CTAs
-
-#### `StatsSection` (`src/components/home/StatsSection.tsx`)
-- Client component with animated stats
-- Uses `CountUp` for each metric ($55M, 23K+, 1k+, 200+)
-- 4-column grid layout with staggered reveal
-
-## Layout Patterns
-
-All pages use wide, full-container layouts (1200px max-width). Avoid narrow `max-w-2xl` or `max-w-3xl` constraints that create squished layouts.
-
-### Common Patterns
-
-```tsx
-// Two-column grid (used on About, Contact)
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-
-// Three-column grid (used for cards, skills)
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-
-// Left metadata / Right content (used on Experience)
-<div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
-  <div className="md:col-span-4 lg:col-span-3">  {/* Date, location */}
-  <div className="md:col-span-8 lg:col-span-9">  {/* Main content */}
-```
-
-### Responsive Typography
-
-```tsx
-// Page titles
-text-[3rem] md:text-[4rem]
-
-// Section titles
-text-[2rem] md:text-[2.5rem]
-
-// Card titles
-text-[1.5rem] md:text-[1.75rem]
-
-// Body text
-text-lg md:text-xl leading-relaxed
-```
+#### `ThemeProvider` (`src/components/providers/ThemeProvider.tsx`)
+- Wraps `next-themes` ThemeProvider
+- Configuration: `enableSystem: true`, `defaultTheme: "system"`
+- Uses `attribute: "class"` for dark mode detection
+- Handles `suppressHydrationWarning`
 
 ## Pages
 
 ### Homepage (`/`)
-Layout: Centered sections, full-width metrics grid
-1. **Hero** (`HeroSection` component) - 2-row layout: smaller inline headshot (120px) + greeting in row 1, full-width description in row 2. Particle background, radial gradient overlay, sparkle icon, magnetic CTAs
-2. **Impact Metrics** (`StatsSection` component) - 4-col grid with animated count-up ($55M, 23K+, 1k+, 200+), staggered reveals
-3. **Featured Work** (2-col grid) - Project cards with gradient background and hover effects
-4. **About Preview** (`max-w-4xl`) - Circular headshot (144px), career narrative hook
-5. **Contact CTA** (`max-w-4xl`) - Growth-focused messaging
+Layout: Centered, narrow content (768px)
+1. **Hero** - Circular headshot (160px) with coral ring, hover animation (scale + shadow), links to /about
+   - "Hi, I'm Austin." (italic serif), tagline, 2-sentence intro
+2. **Social Links** - GitHub, LinkedIn, Email with circular icons
+3. **Featured Section** - 3-column grid with 2 featured projects + 1 featured blog post
+   - Cards have PROJECT/POST labels in accent color
+   - Only titles are underlined for clickability
+4. **Recent Posts** - Latest 5 posts with titles, dates, descriptions
+
+### Posts (`/posts`)
+Layout: Blog listing with tag filter
+1. **Page Title** - "Posts" with description
+2. **Tag Filter** - Horizontal pills: All, [tags with counts]
+3. **Posts List** - Chronological, each with title, date, reading time, description, tags
+
+### Post Detail (`/posts/[slug]`)
+Layout: Prose-styled content
+1. **Title** - Large heading
+2. **Meta** - Date, reading time, tags
+3. **Content** - MDX with custom components
+4. **Back Link** - Return to posts listing
+
+### Tag Filtered (`/posts/tags/[tag]`)
+Layout: Same as Posts page, filtered to specific tag
+
+### Projects (`/projects`)
+Layout: Card grid (2 columns on desktop)
+- 8 project cards with `.card` styling
+- Each: title, description, tags
+- Projects include: Onboarding Initiative, Workday Reporting, Executive Dashboard, ChatGPT Rollout, Report Committee, Workforce Forecasting, Recruiting Funnel, Universal Orlando Tracker
 
 ### About (`/about`)
-Layout: 12-column grid with headshot
-1. **Hero** (4-col/8-col grid) - Circular headshot (280px) left, career narrative right
-2. **Skills & Tools** - Animated `SkillsRadar` chart (6 skills), plus 3-col grid with color-coded borders
-3. **What Makes Me Different** (3-col grid) - Strategic Partnership, Curiosity-Driven, Hands-On Builder
-
-### Work (`/work`)
-Layout: Full-width grid
-- Filter bar with 7 category pills (All, Executive Reporting, Data Infrastructure, Process Optimization, Tools & Automation, Data Governance, Predictive Analytics)
-- Project grid (2-col) with 7 projects including Workforce Forecasting and Recruiting Funnel Optimization
-- Cards: gradient background, animated `DataVizPattern` (5 types mapped to categories), hover border glow and lift
-- Links to individual project pages (routes pending)
+Layout: Centered narrative
+1. **Profile** - Rectangular headshot (220x280px, rounded corners) with career narrative alongside
+2. **Skills & Tools** - 3-column grid: Technical, Platforms, Analytical
+3. **What Makes Me Different** - Strategic Partnership, Curiosity-Driven, Hands-On Builder
+4. **Contact Links** - Email, LinkedIn, GitHub
 
 ### Experience (`/experience`)
-Layout: Visual timeline with gradient connector
-- **Hero** - Title + subtitle
-- **Career Narrative** - First-person narrative about analytical curiosity evolving into People Analytics leadership
-- **Timeline** - Vertical gradient line (`from-accent-coral to-accent-coral/10`), dot markers, date badges with coral pill styling
-- 6 positions: TAG (Head of People Analytics), Chime, Vineti, NextRoll, Delivery Hero, Earlier Roles
-- **Education** - Mercer University, BBA Sports Business Management, 2016
+Layout: Vertical timeline with CSS styling
+1. **Hero** - Title + subtitle
+2. **Career Narrative** - First-person story
+3. **Timeline** - Positions with dates, descriptions
+   - TAG (Head of People Analytics)
+   - Chime, Vineti, NextRoll, Delivery Hero
+   - Earlier Roles (collapsed)
+4. **Education** - Mercer University, 2016
 
-### Playground (`/playground`)
-Layout: 2-col grid
-- 4 placeholder cards for future content:
-  - Interactive Dashboards (Tableau embeds)
-  - SQL & Python Samples
-  - Animated Visualizations
-  - Data Stories
+## CSS Architecture
 
-### Contact (`/contact`)
-Layout: 2-col grid throughout
-- **Hero** (2-col) - CTA + email (austin@austinrose.io) left, social cards with arrow hover animation right
-- **Resume** (2-col) - Description left, download button right
-- Social links: LinkedIn (roseaustin), GitHub (austinjamesrose), Email
+### Tailwind v4 Configuration
 
-## Animations
-
-### Framer Motion (Primary)
-
-The site uses Framer Motion with `LazyMotion` for optimized bundle size. Key patterns:
-
-```tsx
-// Animation variants (src/lib/animations/variants.ts)
-fadeUp       // opacity 0→1, y 20→0
-fadeIn       // opacity 0→1
-staggerContainer  // staggerChildren: 0.1, delayChildren: 0.1
-scaleIn      // opacity 0→1, scale 0.9→1 (spring)
-reducedMotionVariants  // instant fallback
-
-// Transition presets
-transitionPresets.fast   // 150ms
-transitionPresets.base   // 250ms
-transitionPresets.slow   // 400ms
-transitionPresets.spring // stiffness: 400, damping: 30
-```
-
-### CSS Animations (Legacy/Supplemental)
-
-Defined in `globals.css`:
-
-```css
-/* Available animations */
-@keyframes fadeUp      /* Scroll reveal - translateY(20px) to 0 */
-@keyframes fadeIn      /* Page load - translateY(10px) to 0 */
-@keyframes pulse       /* Icon pulse - scale 1 to 1.1, opacity 0.7 to 1 */
-@keyframes float       /* Subtle float - translateY(0) to -4px */
-@keyframes underlineGrow /* Nav underline - scaleX(0) to 1 */
-
-/* Utility classes */
-.animate-fade-in       /* Page content wrapper */
-.animate-fade-up       /* Scroll reveal */
-.animate-pulse-slow    /* 3s infinite pulse */
-.animate-float         /* 3s infinite float */
-```
-
-### Accessibility
-
-All animations respect `prefers-reduced-motion`:
-- Framer Motion: `useReducedMotion()` hook returns instant transitions
-- CSS: Media query disables animations
-- Canvas: `ParticleBackground` returns `null` when motion reduced
-
-## Tailwind v4 Configuration
-
-This project uses Tailwind CSS v4 with the new CSS-based configuration:
+Uses new CSS-based configuration with `@theme inline`:
 
 ```css
 /* globals.css */
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg-primary: var(--bg-primary);
-  --color-accent-coral: var(--accent-primary);
-  /* ... etc */
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-accent: rgb(var(--accent));
+  /* etc. */
 }
 ```
 
-Colors are used via Tailwind classes: `bg-bg-primary`, `text-accent-coral`, etc.
+### Key CSS Classes
+
+```css
+/* Links - dashed underline by default */
+a {
+  text-decoration-style: dashed;
+  text-underline-offset: 4px;
+}
+
+/* Active nav - wavy coral underline */
+.active-nav {
+  text-decoration-style: wavy;
+  text-decoration-color: rgb(var(--accent));
+}
+
+/* No underline utility */
+.no-underline { text-decoration: none !important; }
+
+/* Card style */
+.card {
+  border: 1px solid rgb(var(--border));
+  border-radius: 8px;
+  /* hover: border-accent */
+}
+
+/* Tag pills */
+.tag {
+  border: 1px solid rgb(var(--border));
+  border-radius: 9999px;
+  /* hover: border-accent, color-accent */
+}
+
+/* Social icons - circular with border */
+.social-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgb(var(--border));
+  border-radius: 9999px;
+}
+
+/* Prose for MDX content */
+.prose { /* Tailwind typography overrides */ }
+
+/* Focus states - dashed outline */
+:focus-visible {
+  outline: 2px dashed rgb(var(--accent));
+}
+```
+
+### Accessibility
+
+- Reduced motion: `@media (prefers-reduced-motion: reduce)` disables animations
+- Focus visible: Dashed coral outline on keyboard navigation
+- Color contrast: Tested for WCAG AA compliance
+
+## Blog System
+
+### Content Location
+
+MDX files in `content/posts/` (outside `src/` for clean separation)
+
+### Frontmatter Schema
+
+```yaml
+---
+title: "Post Title"       # Required
+date: "2025-01-01"        # Required, ISO format
+description: "Brief..."   # Required, for listings
+tags: ["tag1", "tag2"]    # Optional, for filtering
+featured: false           # Optional, shows on homepage
+draft: false              # Optional, hides from listings
+---
+```
+
+### Post Utilities (`src/lib/posts.ts`)
+
+```typescript
+getAllPosts()           // Get all published posts, sorted by date
+getPostBySlug(slug)     // Get single post by slug
+getPostsByTag(tag)      // Filter posts by tag
+getAllTags()            // Get unique tags with counts
+getFeaturedPosts()      // Get posts marked featured: true
+```
+
+### Reading Time
+
+Uses `reading-time` package. Returns `{ text: "3 min read", minutes: 2.5, words: 500 }`.
 
 ## Development
 
@@ -376,7 +366,7 @@ Colors are used via Tailwind classes: `bg-bg-primary`, `text-accent-coral`, etc.
 # Install dependencies
 npm install
 
-# Start dev server
+# Start dev server (hot reload)
 npm run dev
 
 # Build for production
@@ -384,14 +374,18 @@ npm run build
 
 # Start production server
 npm start
+
+# Lint
+npm run lint
 ```
 
 ## Deployment
 
-Optimized for Vercel deployment:
+Optimized for Vercel:
 - Zero-config Next.js support
-- Static page generation for all routes
+- Static page generation for blog posts
 - Edge-optimized font loading
+- Preview deployments for feature branches
 
 ```bash
 # Deploy via CLI
@@ -402,19 +396,9 @@ npx vercel --prod
 
 ## Future Enhancements
 
-- [ ] Individual project pages (`/work/[slug]`)
-- [ ] Project filtering functionality (currently static)
-- [ ] Tableau dashboard embeds
-- [ ] Code syntax highlighting (Prism/Shiki)
-- [ ] Contact form with email integration
-- [ ] Resume PDF generation
-- [ ] OG image generation
+- [ ] Search functionality for posts
+- [ ] Individual project pages (`/projects/[slug]`)
+- [ ] OG image generation for social sharing
 - [ ] Analytics integration
-
-### Completed
-- [x] Framer Motion scroll animations
-- [x] Particle background animation
-- [x] Count-up statistics animation
-- [x] Data visualization patterns for project cards
-- [x] Skills radar chart
-- [x] Micro-interactions (sparkles, magnetic buttons)
+- [ ] Contact form
+- [ ] Syntax highlighting for code blocks
