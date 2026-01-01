@@ -57,9 +57,33 @@ draft: false
 ---
 ```
 
-**Adding a new post:**
-1. Create `content/posts/my-post.mdx` with frontmatter
-2. Build will auto-generate routes
+**Adding a new post (from Obsidian):**
+1. Draft in Obsidian using the Blog Post Template (`templates/Blog Post Template.md`)
+2. Copy to `content/posts/` and rename to `.mdx`
+3. Update frontmatter: set `draft: false`, add tags
+4. The filename becomes the URL slug (e.g., `my-post.mdx` → `/posts/my-post`)
+
+**Obsidian resources:**
+- Template: `obsidian-vault/templates/Blog Post Template.md`
+- Writing guide: `obsidian-vault/Markdown Writing Guide.md`
+- Project write-up drafts: `obsidian-vault/project-writeups/`
+
+## Projects
+
+Currently showing 3 personal projects with live external links:
+- Universal Orlando Wait Time Tracker (Streamlit)
+- QB League Fantasy Football (qbleague.xyz)
+- Orlando Parks Family Planner (GitHub Pages)
+
+**Work projects (commented out in `ProjectsClient.tsx`):**
+7 work projects are preserved but hidden, pending case study write-ups. Each has a draft note in `obsidian-vault/project-writeups/`. To restore:
+1. Write the case study in Obsidian
+2. Publish as a blog post
+3. Uncomment the project in `ProjectsClient.tsx`
+4. Add the blog post URL to the project's `externalUrl`
+
+**Homepage featured projects:**
+Defined in `src/app/page.tsx` - currently shows Universal Wait Times + QB League with direct external links.
 
 ## Design System
 
