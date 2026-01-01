@@ -35,6 +35,32 @@ const projects: Project[] = [
     externalUrl: "https://austin-rose-wait-time-project.streamlit.app/",
   },
   {
+    id: "qb-league",
+    category: "Personal Project",
+    title: "QB League Fantasy Football",
+    description:
+      "Custom fantasy football website for a quarterback-only league with friends. Built from scratch to handle our unique scoring rules and league history.",
+    tags: ["Next.js", "TypeScript"],
+    externalUrl: "https://qbleague.xyz",
+  },
+  {
+    id: "orlando-parks-planner",
+    category: "Personal Project",
+    title: "Orlando Parks Family Planner",
+    description:
+      "A personal trip planning app for our family Disney vacation. Uses Anthropic's API to suggest daily itineraries based on real-time wait times and park locations.",
+    tags: ["React", "Anthropic API"],
+    externalUrl: "https://austinjamesrose.github.io/orlando-parks/",
+  },
+];
+
+// =============================================================================
+// WORK PROJECTS - Hidden for now, pending write-ups
+// Uncomment and add back to projects array when case studies are ready
+// =============================================================================
+/*
+const workProjects: Project[] = [
+  {
     id: "onboarding-initiative",
     category: "Process Optimization",
     title: "Onboarding Team Initiative",
@@ -91,6 +117,7 @@ const projects: Project[] = [
     impact: "8% improvement in offer-to-hire conversion",
   },
 ];
+*/
 
 // Get unique categories from projects
 const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
