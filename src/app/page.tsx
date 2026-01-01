@@ -54,8 +54,8 @@ export default function HomePage() {
               </h1>
 
               <p className="opacity-90">
-                I&apos;m a People Analytics leader turning workforce data into strategic action.
-                I partner with HR and business leaders to build data infrastructure, create executive dashboards,
+                I&apos;m a curious People Analytics leader turning workforce data into strategic actions.
+                Currently, I'm at The Aspen Group, where I partner closely with HR and business leaders to build data infrastructure, create memorable data experiences,
                 and deliver insights that drive talent decisions for 23,000+ employees.
               </p>
             </div>
@@ -66,7 +66,7 @@ export default function HomePage() {
             <Link href="/posts">blog posts</Link>{" "}
             or check{" "}
             <Link href="/about">About</Link>{" "}
-            for more info.
+            to explore further.
           </p>
 
           {/* Social Links */}
