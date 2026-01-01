@@ -7,18 +7,20 @@ import { HeadshotDataRing, DataTypeIcon } from "@/components/data-viz";
 // Featured projects for homepage
 const featuredProjects = [
   {
-    id: "onboarding-initiative",
-    title: "Onboarding Team Initiative",
-    description:
-      "Diagnosed pre-hire drop-off as a key revenue risk by analyzing attrition data. Traced the problem to a 6+ month credentialing process with no dedicated support.",
-    impact: "$55M incremental revenue",
-  },
-  {
     id: "universal-wait-times",
     title: "Universal Parks Wait Time Tracker",
     description:
       "Built a real-time scraper and dashboard tracking ride wait times across Universal Orlando parks. Exposed patterns in crowd flow and identified optimal visit windows.",
     impact: "Personal project",
+    url: "https://austin-rose-wait-time-project.streamlit.app/",
+  },
+  {
+    id: "qb-league",
+    title: "QB League Fantasy Football",
+    description:
+      "Custom fantasy football website for a quarterback-only league with friends. Built from scratch to handle our unique scoring rules and league history.",
+    impact: "Personal project",
+    url: "https://qbleague.xyz",
   },
 ];
 
@@ -116,17 +118,20 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Featured Projects */}
             {featuredProjects.map((project) => (
-              <Link key={project.id} href="/projects" className="card block group !no-underline" style={{ textDecoration: 'none' }}>
+              <a key={project.id} href={project.url} target="_blank" rel="noopener noreferrer" className="card block group !no-underline" style={{ textDecoration: 'none' }}>
                 <div className="flex items-center gap-2 mb-1">
                   <DataTypeIcon type="chart" size={14} className="text-accent" />
                   <span className="text-xs text-accent uppercase tracking-wider !no-underline">Project</span>
                 </div>
                 <h3 className="font-display text-lg mb-2 underline decoration-1 underline-offset-4 group-hover:text-accent">
                   {project.title}
+                  <svg className="inline-block w-4 h-4 ml-2 opacity-50 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </h3>
                 <p className="text-sm opacity-80 leading-relaxed mb-2 !no-underline">{project.description}</p>
                 <p className="text-sm text-accent !no-underline">{project.impact}</p>
-              </Link>
+              </a>
             ))}
 
             {/* Featured Post */}
