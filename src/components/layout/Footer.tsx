@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DataSignature } from "@/components/data-viz";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -55,6 +56,11 @@ export function Footer() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
           </a>
+        </div>
+
+        {/* Data Signature */}
+        <div className="flex justify-center mb-4">
+          <DataSignature variant="bars" />
         </div>
 
         {/* Copyright */}

@@ -4,7 +4,7 @@ This file helps Claude Code sessions quickly understand and work with this proje
 
 ## Project Overview
 
-Austin Rose's portfolio and blog (austinrose.io) - a Next.js 16 app with MDX blog, light/dark theme support, and minimal design inspired by [AstroPaper](https://astro-paper.pages.dev/). Features blog posts (from Obsidian markdown), projects portfolio, career timeline, and a clean typography-focused aesthetic.
+Austin Rose's portfolio and blog (austinrose.io) - a Next.js 16 app with MDX blog, light/dark theme support, and minimal design inspired by [AstroPaper v5](https://astro-paper.pages.dev/). Features blog posts (from Obsidian markdown), projects portfolio with data visualization patterns, career timeline with animated nodes, and a clean typography-focused aesthetic. The site conveys "I work with data" through subtle visual reinforcement.
 
 ## Quick Commands
 
@@ -22,7 +22,7 @@ npm run lint     # Run ESLint
 | `/posts` | Blog listing with tag filtering |
 | `/posts/[slug]` | Individual blog post (MDX) |
 | `/posts/tags/[tag]` | Posts filtered by tag |
-| `/projects` | Portfolio projects (cards) |
+| `/projects` | Portfolio projects with category filtering and data viz patterns |
 | `/about` | About page with rectangular headshot + skills |
 | `/experience` | Career timeline |
 
@@ -33,12 +33,14 @@ npm run lint     # Run ESLint
 | File | Purpose |
 |------|---------|
 | `src/app/globals.css` | Design tokens (light/dark mode colors, typography) |
-| `src/app/layout.tsx` | Root layout with ThemeProvider, IBM Plex fonts |
+| `src/app/layout.tsx` | Root layout with ThemeProvider, system mono fonts |
 | `src/lib/posts.ts` | Blog post utilities (getAllPosts, getPostBySlug, etc.) |
 | `content/posts/` | MDX blog posts with frontmatter |
 | `src/components/blog/` | PostCard, PostList, TagList, MDXComponents |
 | `src/components/providers/ThemeProvider.tsx` | next-themes wrapper |
 | `src/components/layout/ThemeToggle.tsx` | Light/dark/system toggle |
+| `src/components/data-viz/DataVizPattern.tsx` | SVG patterns for project cards |
+| `src/components/projects/ProjectsClient.tsx` | Project cards with category filtering |
 
 ## Blog Posts
 
@@ -80,10 +82,28 @@ Minimal AstroPaper-style design with coral accent. Typography-focused, clean lay
 
 ### Typography
 
-| Font | Variable | Usage |
-|------|----------|-------|
-| IBM Plex Mono | `--font-mono` | Body text (monospace feel) |
-| IBM Plex Serif | `--font-serif` | Headings (display) |
+System mono font stack for AstroPaper-style aesthetic:
+```css
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+```
+
+Used for both body text and headings (700 weight for headings).
+
+### Data Visualization CSS Variables
+
+```css
+:root {
+  --viz-pattern-opacity: 0.03;
+  --viz-node-opacity: 0.3;
+  --viz-line-opacity: 0.1;
+}
+
+.dark {
+  --viz-pattern-opacity: 0.06;
+  --viz-node-opacity: 0.4;
+  --viz-line-opacity: 0.15;
+}
+```
 
 ### Key CSS Classes
 
@@ -93,6 +113,29 @@ Minimal AstroPaper-style design with coral accent. Typography-focused, clean lay
 - `.active-nav` - Wavy underline for active nav state
 - `.prose` - Typography for blog content
 - `.no-underline` - Remove link underline
+
+## Data Visualization Components
+
+The site uses subtle data visualization patterns to convey "I work with data."
+
+### DataVizPattern Types
+
+| Pattern | Category | Visual Metaphor |
+|---------|----------|-----------------|
+| `flow` | Process Optimization | Horizontal flow lines |
+| `scatter` | Predictive Analytics | Scatter points with trend line |
+| `bars` | Executive Reporting | Ascending bar chart |
+| `nodes` | Data Infrastructure | Connected network nodes |
+| `grid` | Data Governance | Organized dot grid |
+| `network` | Personal Project, Tools & Automation | Connected network |
+
+### Category Filter (Projects Page)
+
+Interactive pill-shaped filter buttons at top of Projects page:
+- "All" shows all projects (default)
+- Category buttons filter to that category
+- Active state: `bg-accent text-white`
+- Inactive state: bordered with hover effect
 
 ### Homepage Headshot Styling
 ```tsx
@@ -141,7 +184,7 @@ Edit CSS variables in `src/app/globals.css` under `:root` (light) and `.dark`
 src/
 ├── app/
 │   ├── page.tsx        # Homepage
-│   ├── globals.css     # Design tokens
+│   ├── globals.css     # Design tokens + viz variables
 │   ├── layout.tsx      # Root layout
 │   ├── posts/          # Blog pages
 │   │   ├── page.tsx    # Posts listing
@@ -154,7 +197,14 @@ src/
 │   ├── blog/           # PostCard, PostList, TagList, MDXComponents
 │   ├── layout/         # Header, Footer, Container, ThemeToggle
 │   ├── providers/      # ThemeProvider
-│   └── animations/     # ScrollReveal, MotionProvider (minimal)
+│   ├── animations/     # ScrollReveal, MotionProvider (minimal)
+│   ├── data-viz/       # Data visualization components
+│   │   ├── HeadshotDataRing.tsx  # Animated network ring for homepage
+│   │   ├── DataVizPattern.tsx    # SVG patterns (bars, nodes, flow, scatter, grid, network)
+│   │   ├── DataTypeIcon.tsx      # Category icons for featured cards
+│   │   └── DataSignature.tsx     # Footer brand element
+│   └── projects/       # Project page components
+│       └── ProjectsClient.tsx    # Category filtering + project cards
 ├── lib/
 │   └── posts.ts        # Blog utilities
 content/

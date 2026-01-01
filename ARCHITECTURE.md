@@ -58,10 +58,21 @@ austin-portfolio/
 │       │   ├── index.ts
 │       │   └── ThemeProvider.tsx # next-themes wrapper
 │       │
-│       └── animations/         # Minimal animation components
+│       ├── animations/         # Minimal animation components
+│       │   ├── index.ts
+│       │   ├── MotionProvider.tsx # LazyMotion wrapper (optional)
+│       │   └── ScrollReveal.tsx   # Scroll-triggered animations (optional)
+│       │
+│       ├── data-viz/           # Data visualization components
+│       │   ├── index.ts
+│       │   ├── HeadshotDataRing.tsx  # Animated network ring for homepage
+│       │   ├── DataVizPattern.tsx    # SVG patterns (6 types with accent colors)
+│       │   ├── DataTypeIcon.tsx      # Category icons for featured cards
+│       │   └── DataSignature.tsx     # Footer brand element
+│       │
+│       └── projects/           # Project page components
 │           ├── index.ts
-│           ├── MotionProvider.tsx # LazyMotion wrapper (optional)
-│           └── ScrollReveal.tsx   # Scroll-triggered animations (optional)
+│           └── ProjectsClient.tsx    # Category filter + project cards
 │
 ├── content/                    # Blog content (outside src)
 │   └── posts/                  # MDX blog posts
@@ -111,6 +122,19 @@ Colors defined in `globals.css` as RGB values (for opacity support):
   --card: 63, 75, 90;            /* Card bg */
   --border: 71, 85, 105;         /* Borders */
 }
+
+/* Data Visualization Variables */
+:root {
+  --viz-pattern-opacity: 0.03;
+  --viz-node-opacity: 0.3;
+  --viz-line-opacity: 0.1;
+}
+
+.dark {
+  --viz-pattern-opacity: 0.06;
+  --viz-node-opacity: 0.4;
+  --viz-line-opacity: 0.15;
+}
 ```
 
 **Usage in Tailwind:**
@@ -122,22 +146,17 @@ className="bg-[rgb(var(--background)/0.5)]"
 
 ### Typography
 
-Two Google Fonts loaded via `next/font`:
+System mono font stack (AstroPaper-style):
 
-| Font | CSS Variable | Usage |
-|------|--------------|-------|
-| IBM Plex Mono | `--font-mono` | Body text (monospace aesthetic) |
-| IBM Plex Serif | `--font-serif` | Headings/display text |
-
-**Font Stacks:**
 ```css
---font-body: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
---font-display: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 ```
+
+Used for both body text and headings. Headings use font-weight 700.
 
 **Base Styles:**
 - Body: 0.9375rem (15px), line-height 1.7
-- Headings: font-weight 500
+- Headings: font-weight 700 (bold)
 
 ## Components
 
@@ -203,6 +222,42 @@ Two Google Fonts loaded via `next/font`:
 - Uses `attribute: "class"` for dark mode detection
 - Handles `suppressHydrationWarning`
 
+### Data Visualization Components
+
+#### `DataVizPattern` (`src/components/data-viz/DataVizPattern.tsx`)
+- SVG-based animated patterns for project cards
+- 6 pattern types: `bars`, `nodes`, `flow`, `scatter`, `grid`, `network`
+- Accent color highlighting on key elements
+- Props: `pattern`, `animate`, `subtle`, `className`
+- Uses Framer Motion for animations
+- Respects `prefers-reduced-motion` via `useReducedMotion` hook
+- Client component
+
+#### `HeadshotDataRing` (`src/components/data-viz/HeadshotDataRing.tsx`)
+- Animated network visualization orbiting homepage headshot
+- 8-12 nodes with connecting lines
+- Slow orbital rotation (60s per revolution)
+- Client component
+
+#### `DataTypeIcon` (`src/components/data-viz/DataTypeIcon.tsx`)
+- Small icons for featured cards (chart, scatter)
+- 16x16px, accent color
+- Server component
+
+#### `DataSignature` (`src/components/data-viz/DataSignature.tsx`)
+- Footer brand element
+- Small abstract pattern (vertical bars or connected dots)
+- Server component
+
+### Project Components
+
+#### `ProjectsClient` (`src/components/projects/ProjectsClient.tsx`)
+- Category filter with pill-shaped buttons
+- Project card grid with DataVizPattern headers
+- Maintains filter state via `useState`
+- Category-to-pattern mapping for visual variety
+- Client component (uses state for filtering)
+
 ## Pages
 
 ### Homepage (`/`)
@@ -233,9 +288,26 @@ Layout: Same as Posts page, filtered to specific tag
 
 ### Projects (`/projects`)
 Layout: Card grid (2 columns on desktop)
-- 8 project cards with `.card` styling
-- Each: title, description, tags
-- Projects include: Onboarding Initiative, Workday Reporting, Executive Dashboard, ChatGPT Rollout, Report Committee, Workforce Forecasting, Recruiting Funnel, Universal Orlando Tracker
+1. **Category Filter** - Pill-shaped buttons to filter by category
+   - "All" (default), Process Optimization, Predictive Analytics, Executive Reporting, Data Infrastructure, Data Governance, Tools & Automation, Personal Project
+   - Active: coral background, white text
+   - Inactive: bordered with hover effect
+2. **Project Cards** - Each card includes:
+   - DataVizPattern header (animated SVG based on category)
+   - Category label, title, description, impact metric
+   - Optional tags for technical projects
+   - External link icon for live projects
+
+**Category to Pattern Mapping:**
+| Category | Pattern Type |
+|----------|-------------|
+| Process Optimization | `flow` |
+| Predictive Analytics | `scatter` |
+| Executive Reporting | `bars` |
+| Data Infrastructure | `nodes` |
+| Data Governance | `grid` |
+| Tools & Automation | `network` |
+| Personal Project | `network` |
 
 ### About (`/about`)
 Layout: Centered narrative

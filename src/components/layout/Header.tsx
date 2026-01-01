@@ -67,8 +67,8 @@ export function Header() {
         </button>
       </nav>
 
-      {/* Horizontal line under header */}
-      <hr className="border-border m-0" />
+      {/* Dotted line under header - data grid aesthetic */}
+      <div className="header-line" />
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (

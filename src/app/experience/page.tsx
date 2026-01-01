@@ -1,6 +1,17 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/layout";
 
-const experiences = [
+type Experience = {
+  period: string;
+  title: string;
+  company: string;
+  location: string;
+  highlights: string[];
+};
+
+const experiences: Experience[] = [
   {
     period: "Jan 2023 - Present",
     title: "Head of People Analytics",
@@ -80,6 +91,100 @@ const education = [
   },
 ];
 
+function TimelineSection({ experiences }: { experiences: Experience[] }) {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <div className="relative">
+      {experiences.map((exp, index) => {
+        const isCurrent = index === 0;
+        const isLast = index === experiences.length - 1;
+
+        return (
+          <div key={exp.period} className="relative pl-8 pb-8 last:pb-0">
+            {/* Vertical line connecting nodes */}
+            {!isLast && (
+              <motion.div
+                className="absolute left-[5px] top-[14px] bottom-0 w-px bg-foreground"
+                style={{ opacity: 0.15 }}
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
+              />
+            )}
+
+            {/* Node */}
+            <motion.div
+              className={`absolute left-0 top-1 rounded-full ${
+                isCurrent ? "bg-accent" : "bg-foreground"
+              }`}
+              style={{
+                width: isCurrent ? 12 : 10,
+                height: isCurrent ? 12 : 10,
+                opacity: isCurrent ? 1 : 0.3,
+              }}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.1,
+                ease: "backOut",
+              }}
+            >
+              {/* Pulse ring for current role */}
+              {isCurrent && !prefersReducedMotion && (
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-accent"
+                  initial={{ scale: 1, opacity: 0.5 }}
+                  animate={{
+                    scale: [1, 2, 1],
+                    opacity: [0.5, 0, 0.5],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              )}
+            </motion.div>
+
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1 + 0.1,
+              }}
+            >
+              <div className="flex flex-wrap items-baseline gap-2 mb-1">
+                <span className="text-accent text-sm">{exp.period}</span>
+                <span className="opacity-50 text-sm">·</span>
+                <span className="opacity-75 text-sm">{exp.location}</span>
+              </div>
+              <h3 className="font-display text-xl">{exp.title}</h3>
+              <p className="opacity-75 mb-3">{exp.company}</p>
+              <ul className="space-y-2">
+                {exp.highlights.map((highlight, i) => (
+                  <li key={i} className="flex gap-2 opacity-90 text-sm leading-relaxed">
+                    <span className="text-accent">-</span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function ExperiencePage() {
   return (
     <>
@@ -117,27 +222,7 @@ export default function ExperiencePage() {
       {/* Timeline */}
       <section className="py-12">
         <Container>
-          <div className="space-y-8">
-            {experiences.map((exp) => (
-              <div key={exp.period} className="border-l-2 border-accent pl-6">
-                <div className="flex flex-wrap items-baseline gap-2 mb-1">
-                  <span className="text-accent text-sm">{exp.period}</span>
-                  <span className="opacity-50 text-sm">·</span>
-                  <span className="opacity-75 text-sm">{exp.location}</span>
-                </div>
-                <h3 className="font-display text-xl">{exp.title}</h3>
-                <p className="opacity-75 mb-3">{exp.company}</p>
-                <ul className="space-y-2">
-                  {exp.highlights.map((highlight, i) => (
-                    <li key={i} className="flex gap-2 opacity-90 text-sm leading-relaxed">
-                      <span className="text-accent">-</span>
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <TimelineSection experiences={experiences} />
         </Container>
       </section>
 
@@ -147,7 +232,12 @@ export default function ExperiencePage() {
       <section className="py-12">
         <Container>
           <h2 className="text-2xl mb-6">Education</h2>
-          <div className="border-l-2 border-accent pl-6">
+          <div className="relative pl-8">
+            {/* Node */}
+            <div
+              className="absolute left-0 top-1 w-[10px] h-[10px] rounded-full bg-foreground"
+              style={{ opacity: 0.3 }}
+            />
             <span className="text-accent text-sm">{education[0].year}</span>
             <h3 className="font-display text-xl mt-1">
               {education[0].degree} in {education[0].field}

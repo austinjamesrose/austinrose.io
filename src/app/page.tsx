@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/layout";
 import { getAllPosts, getFeaturedPosts } from "@/lib/posts";
+import { HeadshotDataRing, DataTypeIcon } from "@/components/data-viz";
 
 // Featured projects for homepage
 const featuredProjects = [
@@ -33,21 +34,22 @@ export default function HomePage() {
       <section className="py-12">
         <Container>
           <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
-            {/* Headshot */}
-            <Link href="/about" className="block mx-auto sm:mx-0 group flex-shrink-0">
+            {/* Headshot with Data Ring */}
+            <Link href="/about" className="block mx-auto sm:mx-0 group flex-shrink-0 relative">
+              <HeadshotDataRing size={160} />
               <Image
                 src="/images/headshot.jpg"
                 alt="Austin Rose"
                 width={160}
                 height={160}
-                className="w-40 h-40 rounded-full object-cover ring-4 ring-accent/30 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:ring-accent/50"
+                className="w-40 h-40 rounded-full object-cover ring-4 ring-accent/30 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:ring-accent/50 relative z-10"
                 priority
               />
             </Link>
 
             {/* Intro */}
             <div>
-              <h1 className="text-4xl sm:text-5xl mb-4 italic">
+              <h1 className="text-4xl sm:text-5xl mb-4">
                 Hi, I&apos;m Austin.
               </h1>
 
@@ -115,8 +117,11 @@ export default function HomePage() {
             {/* Featured Projects */}
             {featuredProjects.map((project) => (
               <Link key={project.id} href="/projects" className="card block group !no-underline" style={{ textDecoration: 'none' }}>
-                <span className="text-xs text-accent uppercase tracking-wider !no-underline">Project</span>
-                <h3 className="font-display text-lg mt-1 mb-2 underline decoration-1 underline-offset-4 group-hover:text-accent">
+                <div className="flex items-center gap-2 mb-1">
+                  <DataTypeIcon type="chart" size={14} className="text-accent" />
+                  <span className="text-xs text-accent uppercase tracking-wider !no-underline">Project</span>
+                </div>
+                <h3 className="font-display text-lg mb-2 underline decoration-1 underline-offset-4 group-hover:text-accent">
                   {project.title}
                 </h3>
                 <p className="text-sm opacity-80 leading-relaxed mb-2 !no-underline">{project.description}</p>
@@ -127,8 +132,11 @@ export default function HomePage() {
             {/* Featured Post */}
             {featuredPost && (
               <Link href={`/posts/${featuredPost.slug}`} className="card block group !no-underline" style={{ textDecoration: 'none' }}>
-                <span className="text-xs text-accent uppercase tracking-wider !no-underline">Post</span>
-                <h3 className="font-display text-lg mt-1 mb-2 underline decoration-1 underline-offset-4 group-hover:text-accent">
+                <div className="flex items-center gap-2 mb-1">
+                  <DataTypeIcon type="scatter" size={14} className="text-accent" />
+                  <span className="text-xs text-accent uppercase tracking-wider !no-underline">Post</span>
+                </div>
+                <h3 className="font-display text-lg mb-2 underline decoration-1 underline-offset-4 group-hover:text-accent">
                   {featuredPost.frontmatter.title}
                 </h3>
                 <p className="text-sm opacity-80 leading-relaxed mb-2 !no-underline">

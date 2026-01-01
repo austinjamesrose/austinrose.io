@@ -1,23 +1,7 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Serif } from "next/font/google";
 import { Header, Footer } from "@/components/layout";
 import { ThemeProvider } from "@/components/providers";
 import "./globals.css";
-
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600"],
-});
-
-const ibmPlexSerif = IBM_Plex_Serif({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -65,9 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${ibmPlexMono.variable} ${ibmPlexSerif.variable} antialiased flex min-h-screen flex-col`}
-      >
+      <body className="antialiased flex min-h-screen flex-col">
         <ThemeProvider>
           <Header />
           <main className="flex-1">{children}</main>

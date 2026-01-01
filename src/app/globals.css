@@ -11,6 +11,11 @@ html:not(.dark) {
   --card: 230, 230, 230;
   --card-muted: 205, 205, 205;
   --border: 228, 225, 225;
+
+  /* Data visualization opacities - lighter for light mode */
+  --viz-pattern-opacity: 0.04;
+  --viz-node-opacity: 0.35;
+  --viz-line-opacity: 0.12;
 }
 
 .dark {
@@ -21,6 +26,11 @@ html:not(.dark) {
   --card: 63, 75, 90;
   --card-muted: 89, 107, 129;
   --border: 71, 85, 105;
+
+  /* Data visualization opacities - stronger for dark mode */
+  --viz-pattern-opacity: 0.08;
+  --viz-node-opacity: 0.45;
+  --viz-line-opacity: 0.18;
 }
 
 @theme inline {
@@ -32,9 +42,9 @@ html:not(.dark) {
   --color-card-muted: rgb(var(--card-muted));
   --color-border: rgb(var(--border));
 
-  --font-body: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-display: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-body: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-display: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /* Base styles */
@@ -50,7 +60,7 @@ html {
 body {
   background-color: rgb(var(--background));
   color: rgb(var(--foreground));
-  font-family: var(--font-body);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.9375rem;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -101,14 +111,27 @@ a:hover {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 700;
   color: rgb(var(--foreground));
 }
 
 /* Horizontal rule */
 hr {
   border-color: rgb(var(--border));
+}
+
+/* Dotted pattern for header underline - data grid aesthetic */
+.header-line {
+  border: none;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgb(var(--border)) 0px,
+    rgb(var(--border)) 2px,
+    transparent 2px,
+    transparent 8px
+  );
 }
 
 /* Container utility */
