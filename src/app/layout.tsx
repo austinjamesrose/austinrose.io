@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://austinrose.io"),
   title: {
     default: "Austin Rose | People Analytics Leader",
     template: "%s | Austin Rose",
