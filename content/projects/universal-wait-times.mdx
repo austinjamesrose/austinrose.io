@@ -1,0 +1,30 @@
+---
+title: "Universal Orlando Wait Time Tracker"
+category: "Personal Project"
+description: "Real-time data pipeline collecting wait times every 30 minutes via GitHub Actions. Explore patterns by hour, day, and ride across Islands of Adventure, Universal Studios, and Epic Universe."
+tags: ["Python", "Streamlit", "SQLite", "GitHub Actions"]
+featured: true
+draft: false
+externalUrl: "https://austin-rose-wait-time-project.streamlit.app/"
+pattern: "scatter"
+---
+
+## The Idea
+
+I wanted to know when the best time to ride Hagrid's Motorbike Adventure actually is. Not "avoid weekends" generic advice, but real data: what does the wait look like at 9am vs 2pm? How does it change by day of week? What about holidays?
+
+So I built a system to find out.
+
+## How It Works
+
+A GitHub Actions workflow runs every 30 minutes, pulling live wait time data from Universal Orlando's API. The data lands in a SQLite database that now contains months of historical patterns across all three parks: Islands of Adventure, Universal Studios Florida, and the new Epic Universe.
+
+The Streamlit dashboard lets you slice the data however you want: by ride, by hour, by day of week, or by date range. You can compare rides head-to-head or look at park-wide trends.
+
+## What I Learned
+
+The data confirmed some intuitions (mornings are better, weekdays beat weekends) but also surfaced surprises. Some rides have completely different wait patterns than you'd expect. The dashboard makes those patterns visible at a glance.
+
+## Try It
+
+The app is live and updates with fresh data every 30 minutes. Pick a ride, pick a time window, and see what the wait times actually look like.

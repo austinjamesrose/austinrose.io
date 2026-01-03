@@ -1,0 +1,26 @@
+---
+title: "Orlando Parks Family Planner"
+category: "Personal Project"
+description: "A personal trip planning app for our family Disney vacation. Uses Anthropic's API to suggest daily itineraries based on real-time wait times and park locations."
+tags: ["React", "Anthropic API"]
+featured: false
+draft: false
+externalUrl: "https://austinjamesrose.github.io/orlando-parks/"
+pattern: "nodes"
+---
+
+## The Context
+
+Planning a Disney trip with kids is genuinely complex. Which park which day? What order to hit rides? When to take breaks? I wanted something smarter than a spreadsheet but more personal than generic touring plans.
+
+## What It Does
+
+The app pulls real-time wait time data and park information, then uses Anthropic's Claude API to generate suggested itineraries. You tell it your party composition (ages, preferences, must-dos) and it builds a day plan that accounts for geography, wait times, and realistic pacing.
+
+## How I Use It
+
+This was built for our family's actual trip. I can tweak preferences, regenerate plans, and adjust on the fly. It's not a polished product for the masses; it's a tool that made our vacation planning genuinely easier.
+
+## The Tech
+
+React frontend hosted on GitHub Pages, hitting the Anthropic API for the intelligence layer. The prompt engineering took more iteration than the UI: getting Claude to understand park geography and make sensible recommendations required careful context design.

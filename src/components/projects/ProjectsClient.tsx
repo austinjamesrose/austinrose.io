@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { DataVizPattern, type PatternType } from "@/components/data-viz";
 
 // Map categories to pattern types
@@ -14,118 +15,28 @@ const categoryToPattern: Record<string, PatternType> = {
   "Personal Project": "network",
 };
 
-type Project = {
-  id: string;
+export type Project = {
+  slug: string;
   category: string;
   title: string;
   description: string;
   impact?: string;
   tags?: string[];
   externalUrl?: string;
+  pattern?: string;
 };
 
-const projects: Project[] = [
-  {
-    id: "universal-wait-times",
-    category: "Personal Project",
-    title: "Universal Orlando Wait Time Tracker",
-    description:
-      "Real-time data pipeline collecting wait times every 30 minutes via GitHub Actions. Explore patterns by hour, day, and ride across Islands of Adventure, Universal Studios, and Epic Universe.",
-    tags: ["Python", "Streamlit", "SQLite", "GitHub Actions"],
-    externalUrl: "https://austin-rose-wait-time-project.streamlit.app/",
-  },
-  {
-    id: "qb-league",
-    category: "Personal Project",
-    title: "QB League Fantasy Football",
-    description:
-      "Custom fantasy football website for a quarterback-only league with friends. Built from scratch to handle our unique scoring rules and league history.",
-    tags: ["Next.js", "TypeScript"],
-    externalUrl: "https://qbleague.xyz",
-  },
-  {
-    id: "orlando-parks-planner",
-    category: "Personal Project",
-    title: "Orlando Parks Family Planner",
-    description:
-      "A personal trip planning app for our family Disney vacation. Uses Anthropic's API to suggest daily itineraries based on real-time wait times and park locations.",
-    tags: ["React", "Anthropic API"],
-    externalUrl: "https://austinjamesrose.github.io/orlando-parks/",
-  },
-];
-
-// =============================================================================
-// WORK PROJECTS - Hidden for now, pending write-ups
-// Uncomment and add back to projects array when case studies are ready
-// =============================================================================
-/*
-const workProjects: Project[] = [
-  {
-    id: "onboarding-initiative",
-    category: "Process Optimization",
-    title: "Onboarding Team Initiative",
-    description:
-      "Diagnosed pre-hire drop-off as a key revenue risk by analyzing attrition data. Asked 'why are we losing doctors before they even start?' and traced the problem to a 6+ month credentialing process with no dedicated support.",
-    impact: "$55M incremental revenue, 50+ doctors retained",
-  },
-  {
-    id: "workforce-forecasting",
-    category: "Predictive Analytics",
-    title: "Workforce Forecasting Model",
-    description:
-      "Built models projecting headcount demand, requisition volume, and specialist labor availability. Identified a projected surgery capacity shortfall that led leadership to accelerate Oral Surgeon hiring.",
-    impact: "Protected Q1 2026 revenue targets",
-  },
-  {
-    id: "executive-dashboard",
-    category: "Executive Reporting",
-    title: "People & TA Executive Dashboard",
-    description:
-      "Enterprise Tableau dashboard tracking retention, headcount, and talent acquisition metrics across 20+ business units.",
-    impact: "Brand-level performance monitoring enabled",
-  },
-  {
-    id: "workday-reporting",
-    category: "Data Infrastructure",
-    title: "Workday Reporting Ecosystem",
-    description:
-      "Built the data infrastructure foundation from scratch—creating standardized reporting conventions, calculated fields, and dashboards that give visibility across all business units.",
-    impact: "Standardized reporting for 80+ analysts",
-  },
-  {
-    id: "chatgpt-rollout",
-    category: "Tools & Automation",
-    title: "ChatGPT Enterprise Rollout",
-    description:
-      "Led implementation of custom GPTs for policies, data access, and onboarding streamlining.",
-    impact: "Streamlined access to organizational knowledge",
-  },
-  {
-    id: "report-committee",
-    category: "Data Governance",
-    title: "Report Writing Committee",
-    description:
-      "Established governance committee to standardize Workday report conventions and best practices.",
-    impact: "Improved accuracy and findability for 80+ analysts",
-  },
-  {
-    id: "recruiting-funnel",
-    category: "Process Optimization",
-    title: "Recruiting Funnel Optimization",
-    description:
-      "Analyzed funnel conversion data at each interview stage to identify process gaps. Introduced new presentation round based on data insights.",
-    impact: "8% improvement in offer-to-hire conversion",
-  },
-];
-*/
-
-// Get unique categories from projects
-const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
+// Get unique categories from projects array
+function getCategories(projects: Project[]): string[] {
+  return ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
+}
 
 function CategoryFilter({
+  categories,
   selected,
   onSelect,
 }: {
+  categories: string[];
   selected: string;
   onSelect: (category: string) => void;
 }) {
@@ -152,72 +63,51 @@ function CategoryFilter({
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const isExternal = !!project.externalUrl;
-  const patternType = categoryToPattern[project.category] || "bars";
+  const patternType = (project.pattern || categoryToPattern[project.category] || "bars") as PatternType;
 
   return (
-    <div className="card group overflow-hidden relative">
-      {/* DataVizPattern header for all projects */}
-      <div className="mb-4 -mx-5 -mt-5 text-foreground">
-        <DataVizPattern pattern={patternType} animate={true} />
-      </div>
+    <Link href={`/projects/${project.slug}`} className="block no-underline">
+      <div className="card group overflow-hidden relative">
+        {/* DataVizPattern header for all projects */}
+        <div className="mb-4 -mx-5 -mt-5 text-foreground">
+          <DataVizPattern pattern={patternType} animate={true} />
+        </div>
 
-      <div className="relative z-10">
-        <span className="text-xs opacity-75 uppercase tracking-wider">
-          {project.category}
-        </span>
-        <h3 className="font-display text-xl mt-2 mb-2">
-          {isExternal ? (
-            <a
-              href={project.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-accent"
-            >
-              {project.title}
-              <svg
-                className="inline-block w-4 h-4 ml-2 opacity-50 group-hover:opacity-100"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
-          ) : (
-            project.title
-          )}
-        </h3>
-        <p className="text-sm opacity-90 mb-3 leading-relaxed">
-          {project.description}
-        </p>
-        {project.impact && (
-          <p className="text-sm text-accent">
-            Impact: {project.impact}
+        <div className="relative z-10">
+          <span className="text-xs opacity-75 uppercase tracking-wider">
+            {project.category}
+          </span>
+          <h3 className="font-display text-xl mt-2 mb-2 group-hover:text-accent transition-colors decoration-accent decoration-wavy underline-offset-4 group-hover:underline">
+            {project.title}
+          </h3>
+          <p className="text-sm opacity-90 mb-3 leading-relaxed">
+            {project.description}
           </p>
-        )}
-        {project.tags && project.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-3">
-            {project.tags.map((tag) => (
-              <span key={tag} className="tag text-accent border-accent">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+          {project.impact && (
+            <p className="text-sm text-accent">Impact: {project.impact}</p>
+          )}
+          {project.tags && project.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-3">
+              {project.tags.map((tag) => (
+                <span key={tag} className="tag text-accent border-accent">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
-export function ProjectsClient() {
+interface ProjectsClientProps {
+  projects: Project[];
+}
+
+export function ProjectsClient({ projects }: ProjectsClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const categories = getCategories(projects);
 
   const filteredProjects =
     selectedCategory === "All"
@@ -233,11 +123,15 @@ export function ProjectsClient() {
         projects.
       </p>
 
-      <CategoryFilter selected={selectedCategory} onSelect={setSelectedCategory} />
+      <CategoryFilter
+        categories={categories}
+        selected={selectedCategory}
+        onSelect={setSelectedCategory}
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
 

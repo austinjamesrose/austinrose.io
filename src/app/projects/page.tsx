@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Container } from "@/components/layout";
 import { ProjectsClient } from "@/components/projects";
+import { getAllProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -9,10 +10,24 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
+  const projectMetas = getAllProjects();
+
+  // Transform ProjectMeta to the shape ProjectsClient expects
+  const projects = projectMetas.map((p) => ({
+    slug: p.slug,
+    category: p.frontmatter.category,
+    title: p.frontmatter.title,
+    description: p.frontmatter.description,
+    tags: p.frontmatter.tags,
+    impact: p.frontmatter.impact,
+    externalUrl: p.frontmatter.externalUrl,
+    pattern: p.frontmatter.pattern,
+  }));
+
   return (
     <section className="py-12">
       <Container>
-        <ProjectsClient />
+        <ProjectsClient projects={projects} />
       </Container>
     </section>
   );

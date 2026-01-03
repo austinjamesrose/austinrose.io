@@ -1,0 +1,62 @@
+---
+title: "Recruiting Metrics Report Generator"
+category: "Tools & Automation"
+description: "Python automation that transforms raw recruiting data into formatted Excel reports with pipeline metrics, YoY comparisons, and conditional formatting."
+tags: ["Python", "pandas", "openpyxl", "Automation"]
+featured: true
+draft: false
+externalUrl: "https://github.com/austinjamesrose/recruiting-metrics-demo"
+pattern: "flow"
+---
+
+## The Problem
+
+Weekly recruiting reports are tedious. Every week, someone has to pull data from multiple sources, calculate conversion rates, compare against targets, format everything nicely in Excel, and send it out. It's repetitive, error-prone, and eats hours that could go toward actual analysis.
+
+## The Solution
+
+I built a Python pipeline that does it all automatically. Point it at your data sources, run one command, and get a professionally formatted Excel workbook with multiple analysis sheets, conditional highlighting, and frozen headers.
+
+## What It Calculates
+
+**Pipeline Metrics**
+- Applications, interviews, offers, and hires
+- Conversion rates between each stage
+- Variance from targets with color-coded highlighting
+
+**Headcount Tracking**
+- Employee starts and terminations
+- Net headcount changes
+- FTE calculations
+
+**Time Period Analysis**
+- Month-to-date, quarter-to-date, and year-to-date views
+- Year-over-year comparisons
+- Trend identification
+
+## How It's Built
+
+The codebase separates concerns cleanly:
+
+- `recruiting_metrics.py` contains reusable calculation functions
+- `weekly_update.py` orchestrates the report generation
+- Input data comes from CSV/Excel files (recruiting activity, targets, headcount changes, open requisitions)
+- Output is a formatted `.xlsx` workbook ready to distribute
+
+This modular design means the metric functions can be imported and reused in other contexts: dashboards, ad-hoc analysis, or different report formats.
+
+## Flexible Timing
+
+Need to regenerate last month's report for an audit? Just pass a reference date:
+
+```bash
+python weekly_update.py --reference-date 2024-11-15
+```
+
+The system recalculates everything as of that date, using point-in-time snapshots for requisition counts rather than cumulative tracking.
+
+## Why It Matters
+
+Automating reporting isn't glamorous, but it's high-leverage. This script saves hours every week and eliminates copy-paste errors. More importantly, it frees up time for the analysis that actually moves the needle.
+
+The patterns here (modular calculations, configurable date ranges, professional Excel output) transfer to any recurring report. If you're manually building the same Excel file every week, there's probably a version of this that could help.
