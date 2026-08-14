@@ -4,7 +4,9 @@ This file helps Claude Code sessions quickly understand and work with this proje
 
 ## Project Overview
 
-Austin Rose's portfolio and blog (austinrose.io) - a Next.js 16 app with MDX blog, light/dark theme support, and minimal design inspired by [AstroPaper v5](https://astro-paper.pages.dev/). Features blog posts (from Obsidian markdown), projects portfolio with data visualization patterns, career timeline with animated nodes, and a clean typography-focused aesthetic. The site conveys "I work with data" through subtle visual reinforcement.
+Austin Rose's portfolio and blog (austinrose.io) - a Next.js 16 app (App Router, React 19, Turbopack) with an MDX blog and MDX project portfolio, light/dark theme support, and minimal design inspired by [AstroPaper v5](https://astro-paper.pages.dev/). Features blog posts, a projects portfolio with data visualization patterns, a career timeline with animated nodes, dynamic Open Graph images, and a clean typography-focused aesthetic. The site conveys "I work with data" through subtle visual reinforcement.
+
+Both blog posts and projects are file-driven MDX collections (no CMS or database) rendered as static pages.
 
 ## Quick Commands
 
@@ -23,7 +25,8 @@ npm run lint     # Run ESLint
 | `/posts/[slug]` | Individual blog post (MDX) |
 | `/posts/tags/[tag]` | Posts filtered by tag |
 | `/projects` | Portfolio projects with category filtering and data viz patterns |
-| `/about` | About page with rectangular headshot + skills |
+| `/projects/[slug]` | Individual project detail page (MDX) |
+| `/about` | About page with rounded headshot + skills |
 | `/experience` | Career timeline |
 
 **Navigation order:** Experience - Projects - Posts - About
@@ -34,13 +37,16 @@ npm run lint     # Run ESLint
 |------|---------|
 | `src/app/globals.css` | Design tokens (light/dark mode colors, typography) |
 | `src/app/layout.tsx` | Root layout with ThemeProvider, system mono fonts |
-| `src/lib/posts.ts` | Blog post utilities (getAllPosts, getPostBySlug, etc.) |
+| `src/lib/posts.ts` | Blog post utilities (getAllPosts, getPostBySlug, tags, related posts) |
+| `src/lib/projects.ts` | Project utilities (getAllProjects, getProjectBySlug, by category) |
 | `content/posts/` | MDX blog posts with frontmatter |
-| `src/components/blog/` | PostCard, PostList, TagList, MDXComponents |
+| `content/projects/` | MDX project write-ups with frontmatter |
+| `src/components/blog/` | PostCard, PostList, TagList, MDXComponents (shared by posts + projects) |
 | `src/components/providers/ThemeProvider.tsx` | next-themes wrapper |
 | `src/components/layout/ThemeToggle.tsx` | Light/dark/system toggle |
 | `src/components/data-viz/DataVizPattern.tsx` | SVG patterns for project cards |
 | `src/components/projects/ProjectsClient.tsx` | Project cards with category filtering |
+| `src/app/opengraph-image.tsx` | Dynamic OG/Twitter images (also per-post and per-project) |
 
 ## Blog Posts
 
@@ -54,36 +60,45 @@ description: "Brief description"
 tags: ["tag1", "tag2"]
 featured: false
 draft: false
+# image: "/images/..."   # optional social/OG image
+# author: "Austin Rose"  # optional
 ---
 ```
 
-**Adding a new post (from Obsidian):**
-1. Draft in Obsidian using the Blog Post Template (`templates/Blog Post Template.md`)
-2. Copy to `content/posts/` and rename to `.mdx`
-3. Update frontmatter: set `draft: false`, add tags
-4. The filename becomes the URL slug (e.g., `my-post.mdx` → `/posts/my-post`)
+**Adding a new post:**
+1. Create `content/posts/slug-name.mdx` with the frontmatter above
+2. The filename becomes the URL slug (e.g., `my-post.mdx` → `/posts/my-post`)
+3. Set `draft: false` to publish (drafts still render in `npm run dev`)
+4. Set `featured: true` to surface it on the homepage (only the newest featured post is shown)
 
-**Obsidian resources:**
-- Template: `obsidian-vault/templates/Blog Post Template.md`
-- Writing guide: `obsidian-vault/Markdown Writing Guide.md`
-- Project write-up drafts: `obsidian-vault/project-writeups/`
+Posts drafted in Obsidian are kept in a local vault that is **not committed** to this repo — only the finished `.mdx` files under `content/posts/` live here.
 
 ## Projects
 
-Currently showing 3 personal projects with live external links:
-- Universal Orlando Wait Time Tracker (Streamlit)
-- QB League Fantasy Football (qbleague.xyz)
-- Orlando Parks Family Planner (GitHub Pages)
+Projects are MDX files in `content/projects/`, read by `src/lib/projects.ts` (same file-driven pattern as posts). Frontmatter schema:
 
-**Work projects (commented out in `ProjectsClient.tsx`):**
-7 work projects are preserved but hidden, pending case study write-ups. Each has a draft note in `obsidian-vault/project-writeups/`. To restore:
-1. Write the case study in Obsidian
-2. Publish as a blog post
-3. Uncomment the project in `ProjectsClient.tsx`
-4. Add the blog post URL to the project's `externalUrl`
+```yaml
+---
+title: "Project Title"
+category: "Personal Project"   # drives the DataVizPattern (see mapping below)
+description: "Brief description"
+tags: ["Python", "Streamlit"]
+featured: false
+draft: false
+externalUrl: "https://..."     # optional live/source link
+pattern: "scatter"             # optional; overrides the category→pattern default
+impact: "Personal project"     # optional
+---
+```
+
+- `/projects` lists **all non-draft projects** (sorted by title); category is used for the interactive filter and the card's `DataVizPattern`.
+- `/projects/[slug]` renders the project's MDX body via `next-mdx-remote/rsc` (`compileMDX`), reusing the blog `MDXComponents`.
+- `featured` is currently unused on the projects page itself — it only feeds `getFeaturedProjects()` helper.
+
+Current projects: Universal Orlando Wait Time Tracker, QB League Fantasy Football, Orlando Parks Family Planner, Recruiting Metrics Report Generator.
 
 **Homepage featured projects:**
-Defined in `src/app/page.tsx` - currently shows Universal Wait Times + QB League with direct external links.
+The two "Featured" projects on the homepage are **hardcoded** in `src/app/page.tsx` (currently Universal Wait Times + QB League, linking directly to their external URLs) — they are independent of the `content/projects/` MDX `featured` flag. To change what the homepage shows, edit the `featuredProjects` array in `src/app/page.tsx`.
 
 ## Design System
 
@@ -207,32 +222,41 @@ Edit CSS variables in `src/app/globals.css` under `:root` (light) and `.dark`
 ```
 src/
 ├── app/
-│   ├── page.tsx        # Homepage
-│   ├── globals.css     # Design tokens + viz variables
-│   ├── layout.tsx      # Root layout
-│   ├── posts/          # Blog pages
-│   │   ├── page.tsx    # Posts listing
-│   │   ├── [slug]/     # Post detail
-│   │   └── tags/[tag]/ # Tag filtering
-│   ├── projects/       # Projects portfolio
-│   ├── about/          # About page
-│   └── experience/     # Career timeline
+│   ├── page.tsx            # Homepage
+│   ├── globals.css         # Design tokens + viz variables
+│   ├── layout.tsx          # Root layout + site metadata
+│   ├── opengraph-image.tsx # Dynamic OG image (root)
+│   ├── twitter-image.tsx   # Dynamic Twitter image (root)
+│   ├── posts/              # Blog pages
+│   │   ├── page.tsx        # Posts listing
+│   │   ├── [slug]/         # Post detail (+ opengraph-image.tsx)
+│   │   └── tags/[tag]/     # Tag filtering
+│   ├── projects/           # Projects portfolio
+│   │   ├── page.tsx        # Projects listing
+│   │   └── [slug]/         # Project detail (+ opengraph-image.tsx)
+│   ├── about/              # About page
+│   └── experience/         # Career timeline
 ├── components/
-│   ├── blog/           # PostCard, PostList, TagList, MDXComponents
-│   ├── layout/         # Header, Footer, Container, ThemeToggle
-│   ├── providers/      # ThemeProvider
-│   ├── animations/     # ScrollReveal, MotionProvider (minimal)
-│   ├── data-viz/       # Data visualization components
+│   ├── blog/               # PostCard, PostList, TagList, MDXComponents
+│   ├── layout/             # Header, Footer, Container, ThemeToggle
+│   ├── providers/          # ThemeProvider
+│   ├── animations/         # ScrollReveal, MotionProvider (minimal)
+│   ├── data-viz/           # Data visualization components
 │   │   ├── HeadshotDataRing.tsx  # Animated network ring for homepage
 │   │   ├── DataVizPattern.tsx    # SVG patterns (bars, nodes, flow, scatter, grid, network)
 │   │   ├── DataTypeIcon.tsx      # Category icons for featured cards
+│   │   ├── TimelineNodes.tsx     # Animated nodes for the experience timeline
 │   │   └── DataSignature.tsx     # Footer brand element
-│   └── projects/       # Project page components
+│   └── projects/           # Project page components
 │       └── ProjectsClient.tsx    # Category filtering + project cards
+├── hooks/                  # useReducedMotion, etc.
 ├── lib/
-│   └── posts.ts        # Blog utilities
+│   ├── posts.ts            # Blog utilities
+│   ├── projects.ts         # Project utilities
+│   └── animations/         # Framer Motion variants
 content/
-└── posts/              # MDX blog posts
+├── posts/                  # MDX blog posts
+└── projects/               # MDX project write-ups
 ```
 
 ## Deployment

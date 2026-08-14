@@ -163,7 +163,7 @@ npm run lint
 ## Environment
 
 - **Production URL**: https://austinrose.io
-- **GitHub Repo**: https://github.com/austinjamesrose/austin-portfolio
+- **GitHub Repo**: https://github.com/austinjamesrose/austinrose.io
 - **Vercel Dashboard**: https://vercel.com/austinjamesrose/austin-portfolio
 
 ## Typical Workflow Example

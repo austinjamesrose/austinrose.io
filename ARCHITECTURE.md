@@ -16,7 +16,7 @@
 ## Project Structure
 
 ```
-austin-portfolio/
+austinrose.io/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── layout.tsx          # Root layout (fonts, header, footer, ThemeProvider)
