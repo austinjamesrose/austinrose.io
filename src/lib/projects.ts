@@ -114,11 +114,12 @@ export function getProjectBySlug(slug: string): Project | null {
 }
 
 /**
- * Get all project slugs (useful for static generation)
+ * Get all published (non-draft) project slugs (useful for static generation).
+ * Drafts are excluded so they aren't pre-rendered in production; they remain
+ * viewable on-demand in development via getProjectBySlug.
  */
 export function getAllProjectSlugs(): string[] {
-  const files = getProjectFiles();
-  return files.map((file) => file.replace(/\.mdx$/, ""));
+  return getAllProjects().map((project) => project.slug);
 }
 
 /**

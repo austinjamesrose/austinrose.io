@@ -6,19 +6,20 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://austinrose.io"),
   title: {
-    default: "Austin Rose | People Analytics Leader",
+    default: "Austin Rose | People Technology & AI",
     template: "%s | Austin Rose",
   },
   description:
-    "Austin Rose is a People Analytics leader specializing in workforce data strategy, executive reporting, and data-driven talent decisions. Explore his portfolio of analytics work impacting 23,000+ employees.",
+    "Austin Rose is a People Technology architect building governed data infrastructure and AI systems that People teams — and AI agents — rely on for talent decisions. Previously led People Analytics for a 23,000+ employee organization.",
   keywords: [
+    "People Technology",
+    "AI Enablement",
+    "Data Infrastructure",
     "People Analytics",
-    "HR Analytics",
-    "Data Visualization",
-    "Workforce Analytics",
-    "Talent Analytics",
+    "Data Governance",
+    "AI Agents",
+    "Databricks",
     "Workday",
-    "Tableau",
   ],
   authors: [{ name: "Austin Rose" }],
   creator: "Austin Rose",
@@ -27,15 +28,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://austinrose.io",
     siteName: "Austin Rose",
-    title: "Austin Rose | People Analytics Leader",
+    title: "Austin Rose | People Technology & AI",
     description:
-      "People Analytics leader specializing in workforce data strategy and executive reporting.",
+      "People Technology architect building governed data infrastructure and AI systems for People teams.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Austin Rose | People Analytics Leader",
+    title: "Austin Rose | People Technology & AI",
     description:
-      "People Analytics leader specializing in workforce data strategy and executive reporting.",
+      "People Technology architect building governed data infrastructure and AI systems for People teams.",
   },
   robots: {
     index: true,

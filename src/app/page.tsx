@@ -56,9 +56,9 @@ export default function HomePage() {
               </h1>
 
               <p className="opacity-90">
-                I&apos;m a curious People Analytics leader turning workforce data into strategic actions.
-                Currently, I'm at The Aspen Group, where I partner closely with HR and business leaders to build data infrastructure, create memorable data experiences,
-                and deliver insights that drive talent decisions for 23,000+ employees.
+                I&apos;m a People Technology architect and builder. At Airtable, I build the governed data infrastructure and AI systems
+                that People teams &mdash; and increasingly, AI agents &mdash; rely on to make talent decisions. Before that, I led People
+                Analytics for a 23,000+ employee organization, turning workforce data into strategic action.
               </p>
             </div>
           </div>

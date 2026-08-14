@@ -6,29 +6,30 @@ import { Container } from "@/components/layout";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Austin Rose's journey from recruiting to People Analytics leadership.",
+    "Learn about Austin Rose's path from recruiting to People Analytics to building People Technology and AI infrastructure at Airtable.",
 };
 
 const skills = {
   technical: [
     "SQL (CTEs, window functions, complex joins)",
     "Python (pandas, matplotlib)",
-    "Tableau",
-    "BigQuery",
-    "Excel / Google Sheets",
+    "Databricks / warehouse data modeling",
+    "Multi-agent orchestration (Claude Code)",
+    "Tableau & BigQuery",
   ],
   platforms: [
     "Workday (deep expertise)",
+    "Databricks",
     "Greenhouse ATS",
-    "ChatGPT Enterprise",
-    "ClickUp",
+    "Claude & AI agents",
+    "GitHub / CI-CD",
   ],
-  analytical: [
-    "Executive Reporting",
+  focus: [
+    "Data Infrastructure",
+    "AI Enablement & Governance",
+    "Data Governance & Privacy (RBAC, masking, PII classification)",
     "Workforce Planning & Forecasting",
-    "Talent Acquisition Analytics",
-    "Data Governance",
-    "Process Optimization",
+    "Executive Reporting",
   ],
 };
 
@@ -50,16 +51,16 @@ export default function AboutPage() {
             />
             <div className="space-y-4">
               <p className="opacity-90 leading-relaxed">
-                My career tells a story of natural analytical curiosity evolving into People Analytics leadership. Starting in recruiting and business development roles, I was always the person asking &apos;what does the data say?&apos;—tracking conversion rates, analyzing reply rates to outreach, and looking for ways to optimize processes.
+                My career tells a story of natural analytical curiosity evolving into building. Starting in recruiting and business development roles, I was always the person asking &apos;what does the data say?&apos;—tracking conversion rates, analyzing reply rates to outreach, and looking for ways to optimize processes.
               </p>
               <p className="opacity-90 leading-relaxed">
-                That curiosity led to increasingly data-focused recruiting roles at companies like Chime, where I scaled a Data Analytics team from 16 to 59 analysts while using funnel data to improve hiring processes.
+                That curiosity led to increasingly data-focused recruiting roles at companies like Chime, where I scaled a Data Analytics team from 16 to 59 analysts, and then to leading People Analytics for a 23,000+ employee organization at The Aspen Group.
               </p>
             </div>
           </div>
 
           <p className="opacity-90 leading-relaxed mb-8">
-            Now, with three years leading People Analytics for a 23,000+ employee organization, I&apos;m ready to go deeper technically. I&apos;m not looking to abandon the strategic partnership and business impact—I want to pair it with more sophisticated analytical methods and stronger technical fundamentals.
+            Now at Airtable, I&apos;ve gone deeper technically as a People Technology architect. I build the governed data infrastructure and AI systems that People teams—and increasingly, AI agents—rely on to make talent decisions. I don&apos;t adopt off-the-shelf tools; I build the infrastructure other people and other agents build on, and I pair that engineering with the strategic partnership and business impact I&apos;ve always cared about.
           </p>
         </Container>
       </section>
@@ -97,9 +98,9 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <h3 className="font-display text-lg mb-3">Analytical</h3>
+              <h3 className="font-display text-lg mb-3">Focus Areas</h3>
               <ul className="space-y-1 opacity-90">
-                {skills.analytical.map((skill) => (
+                {skills.focus.map((skill) => (
                   <li key={skill} className="flex gap-2">
                     <span className="text-accent">-</span>
                     <span>{skill}</span>
@@ -133,7 +134,7 @@ export default function AboutPage() {
             <div>
               <h3 className="font-display text-lg mb-2">Hands-On Builder</h3>
               <p className="opacity-90 leading-relaxed">
-                Leading analytics for a 23K+ employee organization with a lean team, I&apos;m hands-on each and every day. There&apos;s no room for pure strategy - I&apos;m in the data, writing queries, building dashboards, and iterating on forecasts.
+                I&apos;m hands-on each and every day - in the repo and in the data, modeling warehouse tables, wiring up governance, and orchestrating AI agents to ship. I build the infrastructure other people and other agents build on, not slideware about it.
               </p>
             </div>
           </div>

@@ -1,0 +1,53 @@
+---
+title: "People Data Warehouse & AI Platform"
+category: "Data Infrastructure"
+description: "At Airtable, I architected a governed People data warehouse and the agent-first platform on top of it — built for AI agents as first-class consumers, with privacy and access governance engineered in from day one."
+tags: ["Databricks", "SQL", "AI Agents", "Data Governance"]
+featured: false
+draft: true
+pattern: "nodes"
+impact: "Airtable · People Technology"
+---
+
+## The Mandate
+
+I joined Airtable as a People Technology Architect with a builder-in-residence mandate: don't adopt off-the-shelf tools, build the infrastructure that People teams — and increasingly, AI agents — build on.
+
+The first phase was breadth. Discovery interviews, workshops, agent experiments, office hours, and production fixes across half a dozen People systems. That surfaced the real gap: there was no single, governed source of truth for workforce data, and no way for the AI tools everyone was excited about to consume it safely. So I made the case for one and built it.
+
+## The People Data Warehouse
+
+Over a focused five-week build sprint, I architected and shipped a governed People data warehouse on Databricks. It has a certified layer of conformed workforce and recruiting dimensions — worker movement and internal mobility, funnel and interview signals, a position spine — and a canonical measure registry of **99 certified metrics** organized into a handful of well-defined "metric doors."
+
+The goal was a warehouse people could trust: one definition per metric, reconciled against source systems on every quantitative surface, with a clear promotion path from raw data to certified.
+
+## Governance & Privacy, From Day One
+
+Governance wasn't retrofitted — it was built in from the first week:
+
+- **Role-based access control** and row-level access governance
+- **Protected-category masking** and column-level sensitivity classification across the warehouse
+- **Small-cell suppression** so aggregates can't re-identify individuals
+- **OIDC-based deploys** so no static credentials live in the repo
+- **Scoped data egress** — shares narrowed to named consumers, not opened org-wide
+- Continuous-deploy approvals with a single production gatekeeper
+
+Security tooling (secret scanning, static analysis, an adversarial PR-review gate) ran in CI from the start.
+
+## Built for AI Agents
+
+The differentiator is that this warehouse treats AI agents as first-class consumers. I built a discovery layer — a machine-readable data dictionary and object catalog, explicit tier signals for what's directly consumable, and a daily findability acceptance harness that scores how well an agent can navigate the data.
+
+The payoff: instead of waiting on a report, someone on the People team can ask an AI agent a granular question — a specific slice of hiring history, a mobility trend — and get a trustworthy answer in seconds, drawn from certified data.
+
+## Beyond the Warehouse
+
+The warehouse anchored a broader People Technology practice:
+
+- **AI governance program** for the People org — an intake registry, a review desk, and a certification workflow so the team can build with AI safely rather than being told not to.
+- **Impact@ performance program** — reimagined and launched to production company-wide, for all employees.
+- **AI enablement** — I led the People-org arm of an internal enablement program: office hours, build jams, and hands-on training that grew a community of builders across the team.
+
+## How It Got Built
+
+The velocity came from a multi-agent engineering method. Home "orchestration" threads acted as technical lead, coordinating parallel AI coding agents scoped to single tasks in isolated worktrees, with dedicated adversarial review sessions before anything merged — and a blind agent that dogfooded the warehouse as an analyst to catch what humans wouldn't. The engineering practices (branch conventions, in-repo doctrine, agent instructions) were written so any coding agent could adhere to them, and the warehouse then ran on exactly those practices.

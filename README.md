@@ -1,6 +1,6 @@
 # Austin Rose Portfolio
 
-Personal portfolio and blog for Austin Rose, Head of People Analytics at The Aspen Group.
+Personal portfolio and blog for Austin Rose, People Technology Architect at Airtable.
 
 **Live:** [austinrose.io](https://austinrose.io)
 

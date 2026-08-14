@@ -13,7 +13,22 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    period: "Jan 2023 - Present",
+    period: "Mar 2026 - Present",
+    title: "People Technology Architect",
+    company: "Airtable",
+    location: "Remote",
+    highlights: [
+      "Builder-in-residence for People Technology — I don't adopt off-the-shelf tools, I build the data infrastructure and AI systems that People teams and AI agents build on",
+      "Architected and shipped a governed People data warehouse on Databricks in a focused five-week build sprint, including a canonical registry of 99 certified workforce and recruiting metrics",
+      "Engineered privacy and access governance in from day one: role-based access control, protected-category masking, column-level sensitivity classification, small-cell suppression, and OIDC deploys with no static credentials",
+      "Designed the warehouse for agent-first consumption — a machine-readable discovery layer and daily findability harness that let AI agents answer People-team questions directly in seconds",
+      "Stood up an AI governance program for the People org: intake registry, review desk, and a certification workflow for People-team AI tools",
+      "Reimagined and launched the company-wide Impact@ performance program to production for all employees, and led the People-org arm of an internal AI enablement program",
+      "Developed a multi-agent engineering method — orchestrating parallel AI coding agents behind adversarial review gates — to build and govern the platform at high velocity",
+    ],
+  },
+  {
+    period: "Jan 2023 - Mar 2026",
     title: "Head of People Analytics",
     company: "The Aspen Group",
     location: "Chicago, IL / Dallas, TX (Remote)",
@@ -192,26 +207,26 @@ export default function ExperiencePage() {
         <Container>
           <h1 className="text-3xl mb-4">Experience</h1>
           <p className="opacity-75 mb-8">
-            My journey from recruiting to People Analytics leadership.
+            My path from recruiting to People Technology and AI.
           </p>
 
           <div className="mb-8 opacity-90 leading-relaxed">
             <p className="mb-4">
               My career tells a story of natural analytical curiosity evolving
-              into People Analytics leadership. Starting in recruiting and
-              business development roles, I was always the person asking
-              &quot;what does the data say?&quot;—tracking conversion rates,
-              analyzing reply rates to outreach, and looking for ways to
-              optimize and automate processes.
+              into building. Starting in recruiting and business development
+              roles, I was always the person asking &quot;what does the data
+              say?&quot;—tracking conversion rates, analyzing reply rates to
+              outreach, and looking for ways to optimize and automate processes.
             </p>
             <p>
               That curiosity led to increasingly data-focused recruiting roles
               at companies like Chime, where I scaled a Data Analytics team from
-              16 to 59 analysts while simultaneously using funnel data to
-              improve hiring processes. The transition to a dedicated People
-              Analytics role at The Aspen Group was a natural next step—finally
-              getting to focus entirely on the analytical work I&apos;d been
-              drawn to all along.
+              16 to 59 analysts while using funnel data to improve hiring
+              processes. At The Aspen Group I moved into dedicated People
+              Analytics, leading workforce data strategy for a 23,000+ employee
+              organization. Now at Airtable, I&apos;ve gone deeper still—building
+              the governed data infrastructure and AI systems that People teams,
+              and increasingly AI agents, rely on.
             </p>
           </div>
         </Container>

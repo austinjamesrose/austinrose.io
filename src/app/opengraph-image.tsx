@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Austin Rose - People Analytics Leader";
+export const alt = "Austin Rose - People Technology & AI";
 export const size = {
   width: 1200,
   height: 630,
@@ -83,7 +83,7 @@ export default async function Image() {
               fontWeight: 500,
             }}
           >
-            People Analytics Leader
+            People Technology & AI
           </div>
 
           {/* URL */}
