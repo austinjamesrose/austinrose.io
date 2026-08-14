@@ -16,7 +16,7 @@ const experiences: Experience[] = [
     period: "Mar 2026 - Present",
     title: "People Technology Architect",
     company: "Airtable",
-    location: "Remote",
+    location: "Dallas, TX (Remote)",
     highlights: [
       "Builder-in-residence for People Technology — I don't adopt off-the-shelf tools, I build the data infrastructure and AI systems that People teams and AI agents build on",
       "Architected and shipped a governed People data warehouse on Databricks in a focused five-week build sprint, including a canonical registry of 99 certified workforce and recruiting metrics",
