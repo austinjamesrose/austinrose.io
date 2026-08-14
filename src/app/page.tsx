@@ -56,9 +56,9 @@ export default function HomePage() {
               </h1>
 
               <p className="opacity-90">
-                I&apos;m a People Technology architect and builder. At Airtable, I build the governed data infrastructure and AI systems
-                that People teams &mdash; and increasingly, AI agents &mdash; rely on to make talent decisions. Before that, I led People
-                Analytics for a 23,000+ employee organization, turning workforce data into strategic action.
+                I&apos;m a People Technology architect. At Airtable, I build the systems People teams run on: governed HR data
+                warehouses, recruiting and HRIS platforms, data pipelines, and production AI agents. Before this, I led People
+                Analytics for a 23,000+ employee healthcare enterprise.
               </p>
             </div>
           </div>

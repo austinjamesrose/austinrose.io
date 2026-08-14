@@ -8,6 +8,7 @@ type Experience = {
   title: string;
   company: string;
   location: string;
+  note?: string;
   highlights: string[];
 };
 
@@ -17,27 +18,29 @@ const experiences: Experience[] = [
     title: "People Technology Architect",
     company: "Airtable",
     location: "Dallas, TX (Remote)",
+    note: "Promoted in July from Senior Business Systems Engineer",
     highlights: [
-      "Builder-in-residence for People Technology — I don't adopt off-the-shelf tools, I build the data infrastructure and AI systems that People teams and AI agents build on",
-      "Architected and shipped a governed People data warehouse on Databricks in a focused five-week build sprint, including a canonical registry of 99 certified workforce and recruiting metrics",
-      "Engineered privacy and access governance in from day one: role-based access control, protected-category masking, column-level sensitivity classification, small-cell suppression, and OIDC deploys with no static credentials",
-      "Designed the warehouse for agent-first consumption — a machine-readable discovery layer and daily findability harness that let AI agents answer People-team questions directly in seconds",
-      "Stood up an AI governance program for the People org: intake registry, review desk, and a certification workflow for People-team AI tools",
-      "Reimagined and launched the company-wide Impact@ performance program to production for all employees, and led the People-org arm of an internal AI enablement program",
-      "Developed a multi-agent engineering method — orchestrating parallel AI coding agents behind adversarial review gates — to build and govern the platform at high velocity",
+      "Architected the company's People Data Warehouse on Databricks, shipping the initial production release in five weeks: certified workforce and recruiting data models, 99 canonical metrics, and a data-discovery layer designed for both analysts and AI agents.",
+      "Now in production with agent-first consumption: the People team queries certified data through AI agents in seconds, with governed data shares to Finance and additional data domains onboarding.",
+      "Built data privacy and security controls in from day one: row-level access (RBAC), automated masking of protected-category and PII fields, column-level sensitivity classification, and credential-free deployment pipelines (OIDC), making the warehouse audit-ready by design.",
+      "Delivered the build solo by orchestrating parallel AI coding agents behind mandatory adversarial review gates, compressing a multi-engineer, multi-quarter scope into a single-engineer project.",
+      "Stood up the People org's AI governance program: intake registry, review desk, and certification workflow for org-facing agent builds.",
+      "Redesigned the company's quarterly check-in as an agent-driven reflection tool and launched it company-wide for the August '26 cycle.",
+      "Led AI enablement and change management for the People org: recurring office hours, build jams, and Hyperagent workshops for recruiters, executive assistants, and company-wide onboarding.",
     ],
   },
   {
     period: "Jan 2023 - Mar 2026",
-    title: "Head of People Analytics",
+    title: "Director, People Analytics & AI",
     company: "The Aspen Group",
     location: "Chicago, IL / Dallas, TX (Remote)",
+    note: "Promoted twice: Manager, Talent Acquisition Analytics to Senior Manager, People Analytics to Director, People Analytics & AI",
     highlights: [
-      "Partner with brand HR leaders and People CoE teams as a strategic advisor, translating workforce trends into talent investment recommendations",
-      "Built workforce forecasting models projecting headcount demand—identified surgery capacity shortfall that led to accelerated Oral Surgeon hiring protecting Q1 2026 revenue",
-      "Diagnosed pre-hire drop-off as key revenue risk; recommended dedicated Onboarding team resulting in 50 additional doctor starts YoY and $55M incremental revenue",
-      "Architected enterprise reporting ecosystem: 950+ custom Workday reports, 500+ calculated fields, and 20+ dashboards",
-      "Established Report Writing Committee to govern Workday conventions for 80+ analysts",
+      "Built and led the People Analytics function for a 23,000+ employee, multi-brand healthcare enterprise: managed a senior analyst, advising brand HR leaders and People CoE teams on talent investment decisions.",
+      "Implemented Dash Enterprise for People Analytics reporting, orchestrating a team of parallel coding agents for dashboard buildouts, data pipelining, and requirements gathering.",
+      "Built workforce forecasting models that surfaced a surgery-capacity shortfall early, pulling Oral Surgeon hiring forward ahead of Q1 2026 demand.",
+      "Diagnosed pre-hire drop-off as a key revenue risk; the resulting dedicated Onboarding team drove 50 additional doctor starts year over year, worth $55M in Finance-modeled incremental revenue.",
+      "Governed the enterprise Workday reporting estate (950+ custom reports, 500+ calculated fields, 20+ dashboards) and chaired the Report Writing Committee setting conventions for 80+ analysts.",
     ],
   },
   {
@@ -46,9 +49,9 @@ const experiences: Experience[] = [
     company: "Chime",
     location: "Chicago, IL",
     highlights: [
-      "Scaled Data Analytics organization from 16 to 59 analysts across Marketing, Product, and Strategy—43 total hires",
-      "Analyzed funnel conversion data to identify process gaps; introduced presentation round that increased offer-to-hire by 8%",
-      "Developed SQL and Python technical assessments alongside hiring managers to evaluate candidate skills",
+      "Scaled the Data Analytics organization from 16 to 59 analysts (43 hires) across Marketing, Product, and Strategy.",
+      "Instrumented funnel-conversion analytics that closed process gaps; a new presentation round lifted offer-to-hire by 8%.",
+      "Co-developed SQL and Python technical assessments with hiring managers.",
     ],
   },
   {
@@ -57,9 +60,8 @@ const experiences: Experience[] = [
     company: "Vineti",
     location: "San Francisco, CA",
     highlights: [
-      "Full lifecycle recruiter for Software Engineering, DevOps, and Business Development",
-      "Launched candidate experience survey—drove satisfaction from 71% to 86%",
-      "Project managed Greenhouse ATS implementation, defining workflows and recruiter experience",
+      "Led the end-to-end Greenhouse ATS implementation: requirements gathering, workflow configuration, and recruiter rollout.",
+      "Launched a candidate experience survey that raised satisfaction from 71% to 86%.",
     ],
   },
   {
@@ -68,9 +70,7 @@ const experiences: Experience[] = [
     company: "NextRoll",
     location: "San Francisco, CA",
     highlights: [
-      "Full lifecycle recruiter for Engineering, Data Science, Analytics, and Business Intelligence",
-      "Optimized contractor interview process—reduced source-to-hire by 14 days",
-      "Built recruiting SLAs, headcount routing rules, and modeled projected headcount growth",
+      "Cut source-to-hire by 14 days through interview-process redesign; built recruiting SLAs and headcount growth models.",
     ],
   },
   {
@@ -79,19 +79,17 @@ const experiences: Experience[] = [
     company: "Delivery Hero SE",
     location: "Berlin, Germany",
     highlights: [
-      "High-volume recruiter for international Product organization: Product Design, Product Management, Agile Coaches",
-      "Partnered with IT on Workday Recruiting implementation, scoping business processes",
-      "Led quarterly retrospectives for 50+ person Talent Acquisition team",
+      "Partnered with IT on the global Workday Recruiting implementation, scoping business processes for the Product organization.",
     ],
   },
   {
     period: "2016 - 2018",
     title: "Earlier Roles",
-    company: "Highsnobiety, Pindrop, Hortonworks",
-    location: "Berlin / Atlanta",
+    company: "Pindrop, Hortonworks, Highsnobiety",
+    location: "Atlanta / Berlin",
     highlights: [
-      "Community Manager at Highsnobiety (Berlin)",
-      "Business Development Representative at Pindrop and Hortonworks (Atlanta)",
+      "Business development at Pindrop and Hortonworks (Atlanta).",
+      "Community Manager at Highsnobiety (Berlin).",
     ],
   },
 ];
@@ -183,7 +181,10 @@ function TimelineSection({ experiences }: { experiences: Experience[] }) {
                 <span className="opacity-75 text-sm">{exp.location}</span>
               </div>
               <h3 className="font-display text-xl">{exp.title}</h3>
-              <p className="opacity-75 mb-3">{exp.company}</p>
+              <p className={`opacity-75 ${exp.note ? "mb-1" : "mb-3"}`}>{exp.company}</p>
+              {exp.note && (
+                <p className="text-sm italic opacity-60 mb-3">{exp.note}</p>
+              )}
               <ul className="space-y-2">
                 {exp.highlights.map((highlight, i) => (
                   <li key={i} className="flex gap-2 opacity-90 text-sm leading-relaxed">
@@ -212,21 +213,20 @@ export default function ExperiencePage() {
 
           <div className="mb-8 opacity-90 leading-relaxed">
             <p className="mb-4">
-              My career tells a story of natural analytical curiosity evolving
-              into building. Starting in recruiting and business development
-              roles, I was always the person asking &quot;what does the data
-              say?&quot;—tracking conversion rates, analyzing reply rates to
-              outreach, and looking for ways to optimize and automate processes.
+              A decade from technical recruiting, through People Analytics
+              leadership, to hands-on platform engineering. The throughline is
+              that I was always the person asking &quot;what does the data
+              say?&quot; I started in recruiting and business development,
+              tracking conversion rates and outreach reply rates and looking for
+              anything I could optimize or automate.
             </p>
             <p>
-              That curiosity led to increasingly data-focused recruiting roles
-              at companies like Chime, where I scaled a Data Analytics team from
-              16 to 59 analysts while using funnel data to improve hiring
-              processes. At The Aspen Group I moved into dedicated People
-              Analytics, leading workforce data strategy for a 23,000+ employee
-              organization. Now at Airtable, I&apos;ve gone deeper still—building
-              the governed data infrastructure and AI systems that People teams,
-              and increasingly AI agents, rely on.
+              That pulled me toward data. At Chime I scaled a Data Analytics team
+              from 16 to 59 analysts. From there I moved into People Analytics
+              leadership at The Aspen Group, running the function for a 23,000+
+              employee healthcare enterprise. Now at Airtable I build the systems
+              People teams run on: governed HR data warehouses, recruiting and
+              HRIS platforms, data pipelines, and production AI agents.
             </p>
           </div>
         </Container>

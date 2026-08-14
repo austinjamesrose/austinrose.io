@@ -11,23 +11,23 @@ export const metadata: Metadata = {
 
 const skills = {
   technical: [
-    "SQL (CTEs, window functions, complex joins)",
-    "Python (pandas, matplotlib)",
-    "Databricks / warehouse data modeling",
-    "Multi-agent orchestration (Claude Code)",
-    "Tableau & BigQuery",
+    "SQL",
+    "Python",
+    "Data pipelines & integrations",
+    "CI/CD",
+    "AI agent orchestration (Claude Code, Codex, Hyperagent)",
   ],
   platforms: [
-    "Workday (deep expertise)",
-    "Databricks",
-    "Greenhouse ATS",
-    "Claude & AI agents",
-    "GitHub / CI-CD",
+    "Workday HCM (reporting, calculated fields, Recruiting)",
+    "Databricks (Unity Catalog, Lakeflow)",
+    "Greenhouse",
+    "Airtable & Hyperagent",
+    "Tableau · BigQuery · Google Cloud",
   ],
   focus: [
     "Data Infrastructure",
     "AI Enablement & Governance",
-    "Data Governance & Privacy (RBAC, masking, PII classification)",
+    "HR Data Privacy & Governance",
     "Workforce Planning & Forecasting",
     "Executive Reporting",
   ],
@@ -51,16 +51,16 @@ export default function AboutPage() {
             />
             <div className="space-y-4">
               <p className="opacity-90 leading-relaxed">
-                My career tells a story of natural analytical curiosity evolving into building. Starting in recruiting and business development roles, I was always the person asking &apos;what does the data say?&apos;—tracking conversion rates, analyzing reply rates to outreach, and looking for ways to optimize processes.
+                I&apos;m a People Technology architect. I design and build the systems People teams run on: governed HR data warehouses, HRIS and recruiting platforms, data pipelines, and production AI agents.
               </p>
               <p className="opacity-90 leading-relaxed">
-                That curiosity led to increasingly data-focused recruiting roles at companies like Chime, where I scaled a Data Analytics team from 16 to 59 analysts, and then to leading People Analytics for a 23,000+ employee organization at The Aspen Group.
+                I got here the long way. I started in technical recruiting, where I was always the person asking &apos;what does the data say?&apos; That pulled me toward the data itself. At Chime I scaled a Data Analytics team from 16 to 59 analysts, and from there I moved into People Analytics leadership at The Aspen Group.
               </p>
             </div>
           </div>
 
           <p className="opacity-90 leading-relaxed mb-8">
-            Now at Airtable, I&apos;ve gone deeper technically as a People Technology architect. I build the governed data infrastructure and AI systems that People teams—and increasingly, AI agents—rely on to make talent decisions. I don&apos;t adopt off-the-shelf tools; I build the infrastructure other people and other agents build on, and I pair that engineering with the strategic partnership and business impact I&apos;ve always cared about.
+            Now I&apos;m at Airtable, doing the building hands-on. I ship audit-ready data infrastructure at startup speed, and I like being the person who builds the systems other people, and increasingly other agents, rely on. I still care about the business impact and the partnership that People Analytics taught me. The difference now is that I build the platform, not just the report.
           </p>
         </Container>
       </section>
@@ -74,7 +74,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-display text-lg mb-3">Technical</h3>
+              <h3 className="font-display text-lg mb-3">Engineering & AI</h3>
               <ul className="space-y-1 opacity-90">
                 {skills.technical.map((skill) => (
                   <li key={skill} className="flex gap-2">
@@ -86,7 +86,7 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <h3 className="font-display text-lg mb-3">Platforms</h3>
+              <h3 className="font-display text-lg mb-3">HRIS & Platforms</h3>
               <ul className="space-y-1 opacity-90">
                 {skills.platforms.map((skill) => (
                   <li key={skill} className="flex gap-2">
@@ -134,7 +134,7 @@ export default function AboutPage() {
             <div>
               <h3 className="font-display text-lg mb-2">Hands-On Builder</h3>
               <p className="opacity-90 leading-relaxed">
-                I&apos;m hands-on each and every day - in the repo and in the data, modeling warehouse tables, wiring up governance, and orchestrating AI agents to ship. I build the infrastructure other people and other agents build on, not slideware about it.
+                I&apos;m hands-on every day, in the repo and in the data. I model warehouse tables, build in governance and privacy controls, and orchestrate AI coding agents to ship production systems at startup speed.
               </p>
             </div>
           </div>
