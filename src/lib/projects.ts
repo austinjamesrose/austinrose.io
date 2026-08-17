@@ -69,7 +69,7 @@ function parseProject(fileName: string): Project {
 }
 
 /**
- * Get all published (non-draft) projects sorted by title
+ * Get all published (non-draft) projects, featured first, then by title
  */
 export function getAllProjects(): ProjectMeta[] {
   const files = getProjectFiles();
@@ -85,8 +85,13 @@ export function getAllProjects(): ProjectMeta[] {
     })
     // Filter out drafts
     .filter((project) => !project.frontmatter.draft)
-    // Sort by title alphabetically
-    .sort((a, b) => a.frontmatter.title.localeCompare(b.frontmatter.title));
+    // Featured projects lead, then alphabetical by title
+    .sort((a, b) => {
+      if (a.frontmatter.featured !== b.frontmatter.featured) {
+        return a.frontmatter.featured ? -1 : 1;
+      }
+      return a.frontmatter.title.localeCompare(b.frontmatter.title);
+    });
 
   return projects;
 }

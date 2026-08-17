@@ -64,7 +64,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <p className="text-center text-sm opacity-60">
+        <p className="text-center text-sm opacity-70">
           &copy; {currentYear} Austin Rose
         </p>
       </div>

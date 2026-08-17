@@ -13,7 +13,7 @@ draft: false
 
 ## Why Pokemon?
 
-As I was experimenting with Claude Code over the holiday, I wanted to practice workforce analytics—the kind of analysis HR teams use to understand talent pipelines, identify skill gaps, and spot high performers. The problem? Real workforce data is sensitive. You can't exactly publish an analysis of your company's performance reviews.
+As I was experimenting with Claude Code over the holiday, I wanted to practice workforce analytics, the kind of analysis HR teams use to understand talent pipelines, identify skill gaps, and spot high performers. The problem? Real workforce data is sensitive. You can't exactly publish an analysis of your company's performance reviews.
 
 So I needed a proxy dataset. Something with enough complexity to be interesting, enough structure to apply real frameworks, and enough public familiarity that anyone could follow along.
 
@@ -21,7 +21,7 @@ Pokemon, a personal hobby that I love, fit perfectly.
 
 Think about it: every Pokemon has stats (skills), types (departments), abilities (behavioral traits), evolution stages (career levels), and competitive usage data (performance ratings). There's 25 years of design decisions baked into over a thousand creatures. It's basically a fictional HR database.
 
-What started as a methodology exercise turned into genuine discoveries about game design patterns—and a few lessons about analytics pitfalls that apply far beyond Pokemon.
+What started as a methodology exercise turned into genuine discoveries about game design patterns, plus a few lessons about analytics pitfalls that apply far beyond Pokemon.
 
 ---
 
@@ -57,15 +57,15 @@ The algorithm had no idea what a "tank" or "sweeper" was in Pokemon terms. It ju
 
 **The HR insight**: Most organizations define job families top-down. Leadership decides there should be "analysts" and "managers" and "specialists," then slots people into those boxes. But what if you let the data tell you what roles actually exist?
 
-Cluster your workforce on competency assessments, skills inventories, or even project contribution patterns. You'll often find natural groupings that don't match your org chart—and that's valuable information. Maybe your "Senior Analysts" actually split into two distinct profiles: one group that's deeply technical, another that's client-facing. They have the same title but fundamentally different strengths.
+Cluster your workforce on competency assessments, skills inventories, or even project contribution patterns. You'll often find natural groupings that don't match your org chart, and that's valuable information. Maybe your "Senior Analysts" actually split into two distinct profiles: one group that's deeply technical, another that's client-facing. They have the same title but fundamentally different strengths.
 
-This approach also reveals when your job architecture is fighting reality. If your clusters don't map to your levels, your leveling system might be measuring the wrong things. The Pokemon data found 5 clean archetypes from 6 simple stats. Your competency data is richer than that—imagine what it could surface.
+This approach also reveals when your job architecture is fighting reality. If your clusters don't map to your levels, your leveling system might be measuring the wrong things. The Pokemon data found 5 clean archetypes from 6 simple stats. Your competency data is richer than that. Imagine what it could surface.
 
 ---
 
 ### 2. Game Freak Designs to Stereotypes, Not Gaps
 
-I expected to find "talent gaps"—type and role combinations that should exist but don't. Rock-type speedsters. Electric-type tanks. Interesting design spaces left unexplored.
+I expected to find "talent gaps": type and role combinations that should exist but don't. Rock-type speedsters. Electric-type tanks. Interesting design spaces left unexplored.
 
 After running the analysis, I found 11 apparent gaps. Exciting, right?
 
@@ -95,11 +95,11 @@ The fix isn't to eliminate archetypes. Some clustering is natural and even usefu
 
 Which Pokemon can do the most things? I built a versatility score combining move pool diversity, stat flexibility, and ability options.
 
-Swift Strikers—the fast ones—came out on top. They have the broadest skill sets and dominate the list of "T-shaped talent" (specialists who can also flex into other roles).
+Swift Strikers, the fast ones, came out on top. They have the broadest skill sets and dominate the list of "T-shaped talent" (specialists who can also flex into other roles).
 
 ![Two-panel figure. Left panel: Box plot of Versatility Index by role showing Swift Strikers with the highest median and mean scores. Right panel: Bar chart of T-shaped leaders by role, with Swift Strikers contributing 28 of 50 leaders, followed by Workhorse Executors at 15, Technical Specialists at 6, Defensive Anchors at 1, and Emerging Talent excluded from analysis.](/images/pokemon/synthesis_versatility_role.png)
 
-**The HR insight**: This finding made me think about which roles in an organization tend to develop the most versatile employees. In Pokemon, speed-focused creatures have broader move pools—they're designed to adapt, pivot, and respond quickly. The same pattern likely exists in your workforce.
+**The HR insight**: This finding made me think about which roles in an organization tend to develop the most versatile employees. In Pokemon, speed-focused creatures have broader move pools; they're designed to adapt, pivot, and respond quickly. The same pattern likely exists in your workforce.
 
 Roles that require rapid context-switching like product management, consulting, operations, even analytics - tend to either attract or develop employees with broader skill sets. They have to learn a wide variety of skills to successfully do their jobs. Meanwhile, deep specialist roles (your "Technical Specialists" and "Defensive Anchors") build depth at the cost of breadth. Neither is wrong, but they're very different development paths.
 
@@ -111,7 +111,7 @@ If you're designing rotation programs or identifying future leaders, look at whe
 
 Using competitive usage data from Smogon (where uber-competitive Pokemon players track what's actually good), I built a talent grid mapping performance against flexibility.
 
-The top performers weren't pure specialists or pure generalists. They were both—deep expertise in their role, plus enough versatility to adapt.
+The top performers weren't pure specialists or pure generalists. They were both: deep expertise in their role, plus enough versatility to adapt.
 
 Dragonite, Zapdos, Clefable, Tyranitar. All of them score high on role fit *and* high on cross-functional capability.
 
@@ -119,7 +119,7 @@ Dragonite, Zapdos, Clefable, Tyranitar. All of them score high on role fit *and*
 
 **The HR insight**: The "T-shaped professional" is a common framework used in the workforce. Organizations today hire for and measure depth (technical assessments, certifications, years of experience) or breadth (number of projects, cross-functional exposure) but rarely both together.
 
-The Pokemon data made this concrete. When I plotted performance against flexibility, the star performers weren't clustered at the extremes. They sat in the quadrant that required both: high role fit (they're excellent at their specific job) plus high versatility (they can adapt when conditions change). Dragonite isn't just powerful—it's powerful *and* flexible. That combination is rare and valuable.
+The Pokemon data made this concrete. When I plotted performance against flexibility, the star performers weren't clustered at the extremes. They sat in the quadrant that required both: high role fit (they're excellent at their specific job) plus high versatility (they can adapt when conditions change). Dragonite isn't just powerful, it's powerful *and* flexible. That combination is rare and valuable.
 
 In talent reviews, this means asking two questions instead of one. Not just "how good are they at their current role?" but also "how well could they adapt if that role changed?" The pure specialist who can't flex is a single point of failure. The pure generalist who hasn't mastered anything is a permanent floater. The T-shaped employee who has both? That's your bench strength.
 

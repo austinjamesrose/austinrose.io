@@ -5,13 +5,13 @@ description: "At Airtable, I architected a governed People data warehouse on Dat
 tags: ["Databricks", "SQL", "AI Agents", "Data Governance"]
 featured: false
 draft: true
-pattern: "nodes"
+pattern: "grid"
 impact: "Airtable · People Technology"
 ---
 
 ## The Mandate
 
-I joined Airtable as a People Technology Architect with one job: build the systems the People team runs on. Not adopt tools. Build the infrastructure that people, and increasingly AI agents, rely on.
+I joined Airtable as a People Technology Architect to build the systems the People team runs on. The job was infrastructure, the kind people and increasingly AI agents depend on every day.
 
 My first weeks were breadth. Discovery interviews, workshops, agent experiments, office hours, and production fixes across half a dozen People systems. The gap was obvious. There was no single governed source of truth for workforce data, and no safe way for the AI tools everyone was excited about to consume it. So I made the case for one and built it.
 
@@ -23,7 +23,7 @@ The goal was a warehouse people could trust: one definition per metric, reconcil
 
 ## Governance and Privacy, From Day One
 
-I built data privacy and security controls in from the first week, not after the fact:
+I built data privacy and security controls in during the first week:
 
 - Row-level access control (RBAC)
 - Automated masking of protected-category and PII fields
@@ -37,16 +37,16 @@ The result is a warehouse that is audit-ready by design. Security tooling (secre
 
 The warehouse is now in production with agent-first consumption. Instead of waiting on a report, someone on the People team asks an AI agent a specific question, a slice of hiring history or a mobility trend, and gets a trustworthy answer in seconds, drawn from certified data.
 
-That works because I built the data-discovery layer for machines as well as people: a machine-readable data dictionary and object catalog, explicit signals for what is directly consumable, and a daily harness that scores how well an agent can find and navigate the data. Governed data shares feed Finance, and additional data domains are onboarding now.
+That works because I built the data-discovery layer for machines and for people: a machine-readable data dictionary and object catalog, explicit signals for what is directly consumable, and a daily harness that scores how well an agent can find and navigate the data. Governed shares feed other functions, and additional data domains are onboarding now.
 
 ## Beyond the Warehouse
 
 The warehouse anchored a broader People Technology practice:
 
 - **AI governance program** for the People org: an intake registry, a review desk, and a certification workflow for org-facing agent builds.
-- **Quarterly check-in, redesigned:** I rebuilt the company's quarterly check-in as an agent-driven reflection tool and launched it company-wide for the August '26 cycle.
+- **Quarterly check-in, redesigned:** I led the redesign of the company's quarterly check-in as an agent-driven reflection tool, launched company-wide for the August '26 cycle.
 - **AI enablement:** I led AI enablement and change management for the People org, with recurring office hours, build jams, and workshops for recruiters, executive assistants, and company-wide onboarding.
 
 ## How It Got Built
 
-I delivered the build solo by orchestrating parallel AI coding agents behind mandatory adversarial review gates, which compressed a multi-engineer, multi-quarter scope into a single-engineer project. Orchestration threads acted as technical lead, coordinating agents scoped to single tasks, with dedicated review sessions before anything merged and a blind agent that used the warehouse as an analyst to catch what I would miss. The engineering practices (branch conventions, in-repo doctrine, agent instructions) were written so any coding agent could follow them, and the warehouse ran on exactly those practices.
+I was the sole engineer on the build, orchestrating parallel AI coding agents behind mandatory adversarial review gates, which compressed a multi-engineer, multi-quarter scope into a single-engineer project. Orchestration threads acted as technical lead, coordinating agents scoped to single tasks, with dedicated review sessions before anything merged and a blind agent that used the warehouse as an analyst to catch what I would miss. The engineering practices (branch conventions, in-repo doctrine, agent instructions) were written so any coding agent could follow them, and the warehouse ran on exactly those practices.

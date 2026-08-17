@@ -46,21 +46,21 @@ export default function AboutPage() {
               alt="Austin Rose"
               width={220}
               height={280}
-              className="rounded-lg object-cover flex-shrink-0 mx-auto sm:mx-0"
+              className="rounded-lg object-cover flex-shrink-0 self-start mx-auto sm:mx-0 w-[220px] h-[280px]"
               priority
             />
             <div className="space-y-4">
               <p className="opacity-90 leading-relaxed">
-                I&apos;m a People Technology architect. I design and build the systems People teams run on: governed HR data warehouses, HRIS and recruiting platforms, data pipelines, and production AI agents.
+                I&apos;m a People Technology Architect. I design and build what People teams run on day to day: the warehouse under their reporting, the HRIS and recruiting systems, the pipelines between them, and the AI agents that sit on top.
               </p>
               <p className="opacity-90 leading-relaxed">
-                I got here the long way. I started in technical recruiting, where I was always the person asking &apos;what does the data say?&apos; That pulled me toward the data itself. At Chime I scaled a Data Analytics team from 16 to 59 analysts, and from there I moved into People Analytics leadership at The Aspen Group.
+                I got here the long way. I started in technical recruiting, where I was always the person asking &quot;what does the data say?&quot; That pulled me toward the data itself. At Chime I scaled a Data Analytics team from 16 to 59 analysts, and from there I moved into People Analytics leadership at The Aspen Group.
               </p>
             </div>
           </div>
 
           <p className="opacity-90 leading-relaxed mb-8">
-            Now I&apos;m at Airtable, doing the building hands-on. I ship audit-ready data infrastructure at startup speed, and I like being the person who builds the systems other people, and increasingly other agents, rely on. I still care about the business impact and the partnership that People Analytics taught me. The difference now is that I build the platform, not just the report.
+            Now I&apos;m at Airtable, doing the building myself. I ship audit-ready data infrastructure quickly, and I like being the person other people, and increasingly other agents, depend on. People Analytics taught me to care about business impact and to stay close to the teams I support. I brought both with me and added the platform underneath.
           </p>
         </Container>
       </section>
@@ -122,19 +122,19 @@ export default function AboutPage() {
             <div>
               <h3 className="font-display text-lg mb-2">Strategic Partnership</h3>
               <p className="opacity-90 leading-relaxed">
-                I don&apos;t just deliver reports - I embed myself with stakeholders to understand their real problems. Through ongoing conversations with HR and business leaders, I&apos;ve become a trusted advisor, not just a data provider.
+                I build alongside the people who use what I ship. The metric definitions in the warehouse came out of working sessions with HR and business leaders, which is why the numbers match how they talk about the business. Years of sitting in those rooms is how I learned what to build.
               </p>
             </div>
             <div>
               <h3 className="font-display text-lg mb-2">Curiosity-Driven</h3>
               <p className="opacity-90 leading-relaxed">
-                I dig into challenging business problems. The most impactful recommendations don&apos;t often come from requests, they come from naturally exploring critical data and connecting the dots.
+                I dig into business problems that look messy. The best recommendations I have made rarely started as a request; they came from poking at the data until something looked off.
               </p>
             </div>
             <div>
               <h3 className="font-display text-lg mb-2">Hands-On Builder</h3>
               <p className="opacity-90 leading-relaxed">
-                I&apos;m hands-on every day, in the repo and in the data. I model warehouse tables, build in governance and privacy controls, and orchestrate AI coding agents to ship production systems at startup speed.
+                I&apos;m hands-on every day, in the repo and in the data. I model warehouse tables, build in governance and privacy controls, and orchestrate AI coding agents to get production systems out the door.
               </p>
             </div>
           </div>

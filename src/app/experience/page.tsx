@@ -18,15 +18,14 @@ const experiences: Experience[] = [
     title: "People Technology Architect",
     company: "Airtable",
     location: "Dallas, TX (Remote)",
-    note: "Promoted in July from Senior Business Systems Engineer",
+    note: "Promoted from Senior Business Systems Engineer, August 2026",
     highlights: [
-      "Architected the company's People Data Warehouse on Databricks, shipping the initial production release in five weeks: certified workforce and recruiting data models, 99 canonical metrics, and a data-discovery layer designed for both analysts and AI agents.",
-      "Now in production with agent-first consumption: the People team queries certified data through AI agents in seconds, with governed data shares to Finance and additional data domains onboarding.",
-      "Built data privacy and security controls in from day one: row-level access (RBAC), automated masking of protected-category and PII fields, column-level sensitivity classification, and credential-free deployment pipelines (OIDC), making the warehouse audit-ready by design.",
-      "Delivered the build solo by orchestrating parallel AI coding agents behind mandatory adversarial review gates, compressing a multi-engineer, multi-quarter scope into a single-engineer project.",
-      "Stood up the People org's AI governance program: intake registry, review desk, and certification workflow for org-facing agent builds.",
-      "Redesigned the company's quarterly check-in as an agent-driven reflection tool and launched it company-wide for the August '26 cycle.",
-      "Led AI enablement and change management for the People org: recurring office hours, build jams, and Hyperagent workshops for recruiters, executive assistants, and company-wide onboarding.",
+      "Architected the company's People Data Warehouse on Databricks and shipped the first production release in five weeks: certified workforce and recruiting models, 99 canonical metrics, and a discovery layer built for analysts and AI agents.",
+      "Made it agent-first in production: the People team asks an AI agent a workforce question and gets a certified answer in seconds, with governed shares to other functions and more data domains onboarding.",
+      "Built privacy and security in from day one: row-level access (RBAC), automated masking of protected-category and PII fields, column-level sensitivity classification, and credential-free deploy pipelines (OIDC).",
+      "Ran the build as the sole engineer, orchestrating parallel AI coding agents behind mandatory adversarial review gates, which compressed a multi-engineer, multi-quarter scope into one.",
+      "Led the redesign of the company's quarterly check-in into an agent-driven reflection tool, launched company-wide for the August '26 cycle.",
+      "Stood up the People org's AI governance program (intake registry, review desk, certification workflow) and ran AI enablement across the org through office hours, build jams, and workshops.",
     ],
   },
   {
@@ -183,7 +182,7 @@ function TimelineSection({ experiences }: { experiences: Experience[] }) {
               <h3 className="font-display text-xl">{exp.title}</h3>
               <p className={`opacity-75 ${exp.note ? "mb-1" : "mb-3"}`}>{exp.company}</p>
               {exp.note && (
-                <p className="text-sm italic opacity-60 mb-3">{exp.note}</p>
+                <p className="text-sm italic opacity-70 mb-3">{exp.note}</p>
               )}
               <ul className="space-y-2">
                 {exp.highlights.map((highlight, i) => (
@@ -224,9 +223,9 @@ export default function ExperiencePage() {
               That pulled me toward data. At Chime I scaled a Data Analytics team
               from 16 to 59 analysts. From there I moved into People Analytics
               leadership at The Aspen Group, running the function for a 23,000+
-              employee healthcare enterprise. Now at Airtable I build the systems
-              People teams run on: governed HR data warehouses, recruiting and
-              HRIS platforms, data pipelines, and production AI agents.
+              employee healthcare enterprise. Now at Airtable I build the platform
+              and the AI systems on top of it: the warehouse, the HR systems around
+              it, and the agents the People team works with every day.
             </p>
           </div>
         </Container>
@@ -258,7 +257,7 @@ export default function ExperiencePage() {
               {education[0].degree} in {education[0].field}
             </h3>
             <p className="opacity-75">{education[0].school}</p>
-            <p className="opacity-50 text-sm">{education[0].location}</p>
+            <p className="opacity-70 text-sm">{education[0].location}</p>
           </div>
         </Container>
       </section>

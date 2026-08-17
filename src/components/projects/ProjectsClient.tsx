@@ -66,8 +66,8 @@ function ProjectCard({ project }: { project: Project }) {
   const patternType = (project.pattern || categoryToPattern[project.category] || "bars") as PatternType;
 
   return (
-    <Link href={`/projects/${project.slug}`} className="block no-underline">
-      <div className="card group overflow-hidden relative">
+    <Link href={`/projects/${project.slug}`} className="block no-underline h-full">
+      <div className="card group overflow-hidden relative h-full">
         {/* DataVizPattern header for all projects */}
         <div className="mb-4 -mx-5 -mt-5 text-foreground">
           <DataVizPattern pattern={patternType} animate={true} />
@@ -118,9 +118,8 @@ export function ProjectsClient({ projects }: ProjectsClientProps) {
     <>
       <h1 className="text-3xl mb-4">Projects</h1>
       <p className="opacity-75 mb-6">
-        A collection of work spanning People Analytics, data infrastructure,
-        and personal experiments. From enterprise dashboards to weekend data
-        projects.
+        A mix of what I build at work and what I build on weekends: governed
+        data infrastructure, internal tools, and personal projects.
       </p>
 
       <CategoryFilter
@@ -136,7 +135,7 @@ export function ProjectsClient({ projects }: ProjectsClientProps) {
       </div>
 
       {filteredProjects.length === 0 && (
-        <p className="text-center opacity-60 py-12">
+        <p className="text-center opacity-70 py-12">
           No projects found in this category.
         </p>
       )}

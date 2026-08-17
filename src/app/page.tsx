@@ -13,6 +13,7 @@ const featuredProjects = [
       "Built a real-time scraper and dashboard tracking ride wait times across Universal Orlando parks. Exposed patterns in crowd flow and identified optimal visit windows.",
     impact: "Personal project",
     url: "https://austin-rose-wait-time-project.streamlit.app/",
+    external: true,
   },
   {
     id: "qb-league",
@@ -21,6 +22,7 @@ const featuredProjects = [
       "Custom fantasy football website for a quarterback-only league with friends. Built from scratch to handle our unique scoring rules and league history.",
     impact: "Personal project",
     url: "https://qbleague.xyz",
+    external: true,
   },
 ];
 
@@ -56,7 +58,7 @@ export default function HomePage() {
               </h1>
 
               <p className="opacity-90">
-                I&apos;m a People Technology architect. At Airtable, I build the systems People teams run on: governed HR data
+                I&apos;m a People Technology Architect. At Airtable, I build the systems People teams run on: governed HR data
                 warehouses, recruiting and HRIS platforms, data pipelines, and production AI agents. Before this, I led People
                 Analytics for a 23,000+ employee healthcare enterprise.
               </p>
@@ -73,7 +75,7 @@ export default function HomePage() {
 
           {/* Social Links */}
           <div className="flex items-center gap-3">
-            <span className="opacity-60 text-sm">Social Links:</span>
+            <span className="opacity-70 text-sm">Social Links:</span>
             <Link
               href="https://github.com/austinjamesrose"
               target="_blank"
@@ -117,22 +119,36 @@ export default function HomePage() {
           <h2 className="text-2xl mb-6">Featured</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Featured Projects */}
-            {featuredProjects.map((project) => (
-              <a key={project.id} href={project.url} target="_blank" rel="noopener noreferrer" className="card block group !no-underline" style={{ textDecoration: 'none' }}>
-                <div className="flex items-center gap-2 mb-1">
-                  <DataTypeIcon type="chart" size={14} className="text-accent" />
-                  <span className="text-xs text-accent uppercase tracking-wider !no-underline">Project</span>
-                </div>
-                <h3 className="font-display text-lg mb-2 underline decoration-1 underline-offset-4 group-hover:text-accent">
-                  {project.title}
-                  <svg className="inline-block w-4 h-4 ml-2 opacity-50 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </h3>
-                <p className="text-sm opacity-80 leading-relaxed mb-2 !no-underline">{project.description}</p>
-                <p className="text-sm text-accent !no-underline">{project.impact}</p>
-              </a>
-            ))}
+            {featuredProjects.map((project) => {
+              const body = (
+                <>
+                  <div className="flex items-center gap-2 mb-1">
+                    <DataTypeIcon type="chart" size={14} className="text-accent" />
+                    <span className="text-xs text-accent uppercase tracking-wider !no-underline">Project</span>
+                  </div>
+                  <h3 className="font-display text-lg mb-2 flex items-start gap-2 group-hover:text-accent">
+                    <span className="underline decoration-1 underline-offset-4">{project.title}</span>
+                    {project.external && (
+                      <svg className="w-4 h-4 mt-1 flex-shrink-0 opacity-50 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    )}
+                  </h3>
+                  <p className="text-sm opacity-80 leading-relaxed mb-2 !no-underline">{project.description}</p>
+                  <p className="text-sm text-accent !no-underline">{project.impact}</p>
+                </>
+              );
+
+              return project.external ? (
+                <a key={project.id} href={project.url} target="_blank" rel="noopener noreferrer" className="card block group !no-underline" style={{ textDecoration: 'none' }}>
+                  {body}
+                </a>
+              ) : (
+                <Link key={project.id} href={project.url} className="card block group !no-underline" style={{ textDecoration: 'none' }}>
+                  {body}
+                </Link>
+              );
+            })}
 
             {/* Featured Post */}
             {featuredPost && (
@@ -147,7 +163,7 @@ export default function HomePage() {
                 <p className="text-sm opacity-80 leading-relaxed mb-2 !no-underline">
                   {featuredPost.frontmatter.description}
                 </p>
-                <span className="text-sm opacity-60 !no-underline">
+                <span className="text-sm opacity-70 !no-underline">
                   {new Date(featuredPost.frontmatter.date).toLocaleDateString("en-US", {
                     day: "numeric",
                     month: "short",
@@ -175,7 +191,7 @@ export default function HomePage() {
                   >
                     {post.frontmatter.title}
                   </Link>
-                  <div className="flex items-center gap-2 text-sm opacity-60 mt-1">
+                  <div className="flex items-center gap-2 text-sm opacity-70 mt-1">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
@@ -192,7 +208,7 @@ export default function HomePage() {
               ))}
             </ul>
           ) : (
-            <p className="opacity-60">No posts yet. Check back soon!</p>
+            <p className="opacity-70">No posts yet. Check back soon!</p>
           )}
 
           {allPosts.length > 5 && (
