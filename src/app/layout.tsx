@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Austin Rose",
   },
   description:
-    "Austin Rose is a People Technology architect who builds the systems People teams run on: governed HR data warehouses, recruiting and HRIS platforms, data pipelines, and production AI agents. Previously led People Analytics for a 23,000+ employee healthcare enterprise.",
+    "Austin Rose is a People Technology Architect who builds the systems People teams run on: governed HR data warehouses, recruiting and HRIS platforms, data pipelines, and production AI agents. Previously led People Analytics for a 23,000+ employee healthcare enterprise.",
   keywords: [
     "People Technology",
     "AI Enablement",
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     siteName: "Austin Rose",
     title: "Austin Rose | People Technology & AI",
     description:
-      "People Technology architect building governed data infrastructure and AI systems for People teams.",
+      "People Technology Architect building governed data infrastructure and AI systems for People teams.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Austin Rose | People Technology & AI",
     description:
-      "People Technology architect building governed data infrastructure and AI systems for People teams.",
+      "People Technology Architect building governed data infrastructure and AI systems for People teams.",
   },
   robots: {
     index: true,
