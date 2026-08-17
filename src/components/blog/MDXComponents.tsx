@@ -5,7 +5,7 @@ export const MDXComponents: MDXComponentsType = {
   // Headings
   h1: ({ children, ...props }) => (
     <h1
-      className="text-4xl font-display font-medium text-text-primary mt-12 mb-6 first:mt-0"
+      className="text-4xl font-display font-medium text-foreground mt-12 mb-6 first:mt-0"
       {...props}
     >
       {children}
@@ -13,7 +13,7 @@ export const MDXComponents: MDXComponentsType = {
   ),
   h2: ({ children, ...props }) => (
     <h2
-      className="text-2xl font-display font-medium text-text-primary mt-10 mb-4"
+      className="text-2xl font-display font-medium text-foreground mt-10 mb-4"
       {...props}
     >
       {children}
@@ -21,7 +21,7 @@ export const MDXComponents: MDXComponentsType = {
   ),
   h3: ({ children, ...props }) => (
     <h3
-      className="text-xl font-display font-medium text-text-primary mt-8 mb-3"
+      className="text-xl font-display font-medium text-foreground mt-8 mb-3"
       {...props}
     >
       {children}
@@ -31,7 +31,7 @@ export const MDXComponents: MDXComponentsType = {
   // Paragraph
   p: ({ children, ...props }) => (
     <p
-      className="text-text-secondary font-body leading-relaxed mb-6"
+      className="opacity-90 font-body leading-relaxed mb-6"
       {...props}
     >
       {children}
@@ -48,7 +48,7 @@ export const MDXComponents: MDXComponentsType = {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent-coral hover:text-accent-amber underline underline-offset-2 transition-colors duration-200"
+          className="text-accent hover:opacity-80 underline underline-offset-2 transition-colors duration-200"
           {...props}
         >
           {children}
@@ -59,7 +59,7 @@ export const MDXComponents: MDXComponentsType = {
     return (
       <Link
         href={href || '#'}
-        className="text-accent-coral hover:text-accent-amber underline underline-offset-2 transition-colors duration-200"
+        className="text-accent hover:opacity-80 underline underline-offset-2 transition-colors duration-200"
         {...props}
       >
         {children}
@@ -83,7 +83,7 @@ export const MDXComponents: MDXComponentsType = {
 
     return (
       <code
-        className="px-1.5 py-0.5 text-sm font-mono bg-bg-tertiary text-accent-coral rounded"
+        className="px-1.5 py-0.5 text-sm font-mono bg-muted text-accent rounded"
         {...props}
       >
         {children}
@@ -94,7 +94,7 @@ export const MDXComponents: MDXComponentsType = {
   // Code blocks
   pre: ({ children, ...props }) => (
     <pre
-      className="p-4 my-6 bg-bg-secondary border border-border-subtle rounded-lg overflow-x-auto font-mono text-sm leading-relaxed"
+      className="p-4 my-6 bg-muted border border-border rounded-lg overflow-x-auto font-mono text-sm leading-relaxed"
       {...props}
     >
       {children}
@@ -104,7 +104,7 @@ export const MDXComponents: MDXComponentsType = {
   // Lists
   ul: ({ children, ...props }) => (
     <ul
-      className="list-disc list-outside ml-6 mb-6 space-y-2 text-text-secondary font-body"
+      className="list-disc list-outside ml-6 mb-6 space-y-2 opacity-90 font-body"
       {...props}
     >
       {children}
@@ -112,7 +112,7 @@ export const MDXComponents: MDXComponentsType = {
   ),
   ol: ({ children, ...props }) => (
     <ol
-      className="list-decimal list-outside ml-6 mb-6 space-y-2 text-text-secondary font-body"
+      className="list-decimal list-outside ml-6 mb-6 space-y-2 opacity-90 font-body"
       {...props}
     >
       {children}
@@ -127,7 +127,7 @@ export const MDXComponents: MDXComponentsType = {
   // Blockquote
   blockquote: ({ children, ...props }) => (
     <blockquote
-      className="pl-4 my-6 border-l-4 border-accent-coral italic text-text-secondary font-body"
+      className="pl-4 my-6 border-l-4 border-accent italic opacity-90 font-body"
       {...props}
     >
       {children}
@@ -137,14 +137,14 @@ export const MDXComponents: MDXComponentsType = {
   // Horizontal rule
   hr: (props) => (
     <hr
-      className="my-12 border-0 border-t border-border-subtle"
+      className="my-12 border-0 border-t border-border"
       {...props}
     />
   ),
 
   // Strong/Bold
   strong: ({ children, ...props }) => (
-    <strong className="font-semibold text-text-primary" {...props}>
+    <strong className="font-semibold text-foreground" {...props}>
       {children}
     </strong>
   ),
@@ -179,12 +179,12 @@ export const MDXComponents: MDXComponentsType = {
     </div>
   ),
   thead: ({ children, ...props }) => (
-    <thead className="border-b border-border-subtle" {...props}>
+    <thead className="border-b border-border" {...props}>
       {children}
     </thead>
   ),
   tbody: ({ children, ...props }) => (
-    <tbody className="divide-y divide-border-subtle" {...props}>
+    <tbody className="divide-y divide-border" {...props}>
       {children}
     </tbody>
   ),
@@ -193,14 +193,14 @@ export const MDXComponents: MDXComponentsType = {
   ),
   th: ({ children, ...props }) => (
     <th
-      className="px-4 py-3 text-left font-semibold text-text-primary"
+      className="px-4 py-3 text-left font-semibold text-foreground"
       {...props}
     >
       {children}
     </th>
   ),
   td: ({ children, ...props }) => (
-    <td className="px-4 py-3 text-text-secondary" {...props}>
+    <td className="px-4 py-3 opacity-90" {...props}>
       {children}
     </td>
   ),

@@ -55,10 +55,10 @@ export default async function TagPage({ params }: TagPageProps) {
   return (
     <section className="py-24 md:py-32">
       <Container>
-        <h1 className="font-display text-[3rem] md:text-[4rem] leading-[1.1] text-text-primary mb-8">
+        <h1 className="font-display text-[3rem] md:text-[4rem] leading-[1.1] text-foreground mb-8">
           Posts tagged &ldquo;{displayTag}&rdquo;
         </h1>
-        <p className="text-text-secondary text-lg md:text-xl leading-relaxed mb-12">
+        <p className="opacity-90 text-lg md:text-xl leading-relaxed mb-12">
           {posts.length} {posts.length === 1 ? "post" : "posts"} found.
         </p>
 

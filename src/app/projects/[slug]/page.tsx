@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Back navigation */}
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-accent-coral transition-colors duration-200 mb-12 group"
+          className="inline-flex items-center gap-2 opacity-90 hover:text-accent transition-colors duration-200 mb-12 group"
         >
           <svg
             width="20"
@@ -87,7 +87,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <span className="text-xs opacity-75 uppercase tracking-wider">
             {project.frontmatter.category}
           </span>
-          <h1 className="font-display text-[2.5rem] md:text-[3.5rem] leading-[1.1] text-text-primary mt-2 mb-6">
+          <h1 className="font-display text-[2.5rem] md:text-[3.5rem] leading-[1.1] text-foreground mt-2 mb-6">
             {project.frontmatter.title}
           </h1>
 
@@ -103,7 +103,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {project.frontmatter.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 text-sm font-body bg-bg-tertiary text-text-secondary rounded-full"
+                    className="px-3 py-1 text-sm font-body bg-muted rounded-full"
                   >
                     {tag}
                   </span>
@@ -142,10 +142,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="max-w-3xl">{content}</div>
 
         {/* Footer navigation */}
-        <footer className="mt-16 pt-8 border-t border-border-subtle">
+        <footer className="mt-16 pt-8 border-t border-border">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-accent-coral hover:text-accent-amber transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 text-accent hover:opacity-80 transition-colors duration-200 group"
           >
             <svg
               width="20"

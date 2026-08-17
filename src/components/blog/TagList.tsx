@@ -23,8 +23,8 @@ export function TagList({ tags, activeTag }: TagListProps) {
               transition-colors duration-200
               ${
                 !activeTag
-                  ? 'bg-accent-coral text-white'
-                  : 'bg-bg-tertiary text-text-secondary hover:bg-bg-secondary hover:text-text-primary'
+                  ? 'bg-accent text-white'
+                  : 'bg-muted hover:bg-card-muted hover:text-accent'
               }
             `}
           >
@@ -42,8 +42,8 @@ export function TagList({ tags, activeTag }: TagListProps) {
                 transition-colors duration-200
                 ${
                   activeTag === tag.name.toLowerCase()
-                    ? 'bg-accent-coral text-white'
-                    : 'bg-bg-tertiary text-text-secondary hover:bg-bg-secondary hover:text-text-primary'
+                    ? 'bg-accent text-white'
+                    : 'bg-muted hover:bg-card-muted hover:text-accent'
                 }
               `}
             >

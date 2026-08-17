@@ -30,23 +30,23 @@ export function PostCard({
     <article className="group">
       <Link
         href={`/posts/${slug}`}
-        className="block p-6 -mx-6 rounded-lg transition-colors duration-200 hover:bg-bg-secondary"
+        className="block p-6 -mx-6 rounded-lg transition-colors duration-200 hover:bg-muted"
       >
         <div className="flex flex-col gap-3">
           {/* Date and reading time */}
-          <div className="flex items-center gap-3 text-sm text-text-tertiary font-body">
+          <div className="flex items-center gap-3 text-sm opacity-70 font-body">
             <time dateTime={date}>{formatDate(date)}</time>
-            <span className="text-text-muted">·</span>
+            <span aria-hidden="true">·</span>
             <span>{readingTime}</span>
           </div>
 
           {/* Title */}
-          <h3 className="text-xl font-display text-text-primary group-hover:text-accent-coral transition-colors duration-200">
+          <h3 className="text-xl font-display text-foreground group-hover:text-accent transition-colors duration-200">
             {title}
           </h3>
 
           {/* Description */}
-          <p className="text-text-secondary font-body leading-relaxed line-clamp-2">
+          <p className="opacity-90 font-body leading-relaxed line-clamp-2">
             {description}
           </p>
 
@@ -56,7 +56,7 @@ export function PostCard({
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-1 text-xs font-body text-text-tertiary bg-bg-tertiary rounded-md"
+                  className="px-2 py-1 text-xs font-body opacity-70 bg-muted rounded-md"
                 >
                   {tag}
                 </span>

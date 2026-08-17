@@ -75,7 +75,7 @@ export default async function PostPage({ params }: PostPageProps) {
         {/* Back navigation */}
         <Link
           href="/posts"
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-accent-coral transition-colors duration-200 mb-12 group"
+          className="inline-flex items-center gap-2 opacity-90 hover:text-accent transition-colors duration-200 mb-12 group"
         >
           <svg
             width="20"
@@ -97,14 +97,14 @@ export default async function PostPage({ params }: PostPageProps) {
 
         {/* Post header */}
         <header className="mb-12">
-          <h1 className="font-display text-[2.5rem] md:text-[3.5rem] leading-[1.1] text-text-primary mb-6">
+          <h1 className="font-display text-[2.5rem] md:text-[3.5rem] leading-[1.1] text-foreground mb-6">
             {post.frontmatter.title}
           </h1>
 
           {/* Meta info */}
-          <div className="flex flex-wrap items-center gap-4 text-text-secondary font-body">
+          <div className="flex flex-wrap items-center gap-4 opacity-90 font-body">
             <time dateTime={post.frontmatter.date}>{formattedDate}</time>
-            <span className="text-border-subtle">|</span>
+            <span className="opacity-40">|</span>
             <span>{post.readingTime.text}</span>
           </div>
 
@@ -115,7 +115,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 <Link
                   key={tag}
                   href={`/posts/tags/${tag.toLowerCase()}`}
-                  className="px-3 py-1 text-sm font-body bg-bg-tertiary text-text-secondary rounded-full hover:bg-bg-secondary hover:text-text-primary transition-colors duration-200"
+                  className="px-3 py-1 text-sm font-body bg-muted rounded-full hover:bg-card-muted hover:text-accent transition-colors duration-200"
                 >
                   {tag}
                 </Link>
@@ -128,10 +128,10 @@ export default async function PostPage({ params }: PostPageProps) {
         <div className="max-w-3xl">{content}</div>
 
         {/* Footer navigation */}
-        <footer className="mt-16 pt-8 border-t border-border-subtle">
+        <footer className="mt-16 pt-8 border-t border-border">
           <Link
             href="/posts"
-            className="inline-flex items-center gap-2 text-accent-coral hover:text-accent-amber transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 text-accent hover:opacity-80 transition-colors duration-200 group"
           >
             <svg
               width="20"
